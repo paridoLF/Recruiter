@@ -1,0 +1,43 @@
+What is a .Net Attribute and for what purpose would you use it?  Mark all that apply.
+        
+ A - To implement event handlers in the ASP.NET MVC pipeline.    B - Its only purpose is to indicate whether the property is read-write, read-only, or write-only.  C - To associate help documentation with program entities (through a Help attribute).  D - It is a class that inherits from System.Attribute that adds metadata to another class.
+ 
+ 
+ What is a CORS issue?
+        
+ A - A javascript error that only shows up on ajax requests, usually due to a malformed jquery script.  B - A cross origin resource selection is returned when the security certificate is invalid on the server side.  C - An error displayed by Google Chrome when a connection to a server is forbidden.  D - A security mechanism that blocks web requests that come from a domain or verb that is not authorized by the backend.
+ 
+ What is the best definition of a web request?
+        
+ A - A request message from a service to a server that includes, within the first line of that message, the method to be applied to the resource, the identifier of the resource, and the protocol version in use.  B - A request message from the browser to the server that includes, within the first line of that message, the method to be applied to the resource, the identifier of the resource, and the protocol version in use.  C - A request message from a client to a server that includes, within the first line of that message, the method to be applied to the resource, the identifier of the resource and the protocol version in use.  D - A request message from the web application to the server that includes, within the first line of that message, the method to be applied to the resource, the identifier of the resource and the protocol version in use.
+ 
+ Mark all the statements that are true for Object, dynamic and var in C# 4.0
+        
+ A - Var is resolved at coding or compile time.  B - Var is resolved at runtime.  C - Dynamic is resolved at runtime.  D - Dynamic is resolved at compile time.  E - Object is an interface for all the objects.  F - Object is the base object for all the objects.
+ 
+ What of the following statements are valid for MVC routes?  Mark all that apply.
+        
+ A - The router allows for user-friendly URL support.  B - It maps logical operations upon specific web resources to software functions.  C - The following are ways to implement Optional and Default values in MVC Routing
+   i.  [Route("books/{isbn?}"]
+  ii.  [Route("books/lang/{lang=en}]  D - Execution order is not important because the router always picks the configuration that matches the url.  E - The following are ways to implement Optional and Default values in MVC Routing:
+   i.  Route="books/{isbn?}"; 
+  ii.  Route=("books/lang/[lang=en])"
+  
+  Which of the following would be an advantage of using stored procedures in Microsoft SQL Server?
+        
+ A - Speed and optimization  B - Portability to other databases like Oracle without changes.   C - Procedures can be written in any language supported by dot net.   D - Procedures provide better code documentation.  E - None of the above
+ 
+ 
+ Why and how would you implement Stored Procedure with EF? Mark all that apply.
+        
+ A - To increase performance on operations that involve a large data exchange.  B - To avoid mapping the databases into models.  C - To handle a lock condition in the db.  D - Because procedures are more reliable than linq or EF.  E - To use SQL not supported by EF  F - None of the above  G - None of the above
+ 
+ Which of the following statements are valid descriptions of software contracts (i.e. interfaces)?  
+        
+ A - Language features that allow a subclass or child class to provide a specific implementation of a method that is already provided by one of its superclasses or parent classes.    B - None of the above.    C - They conceal the functional details of a class from objects that send messages to it.  D - A class or structure that implements a contract must implement the members of the contract that specified in the contract defintion
+ 
+ Why would you use auto-mapping?
+        
+ A - In order to map the database and create context, allowing a direct connection to the db.  B - In order to map html views with data models.  C - To transform an input object of one type into an output object of a different type.  D - In order to handle data projections to and from DTOs, Models and ViewModels.
+ 
+ 
