@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27428.2015
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Recruit.WebAPI", "Recruit.WebAPI\Recruit.WebAPI.csproj", "{B2448EA8-741F-4ED3-AF2B-59373BD24046}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Recruit.MVC", "Recruit.MVC\Recruit.MVC.csproj", "{959AD604-5D96-4BE4-9DB1-B6A2D06A2C51}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B2448EA8-741F-4ED3-AF2B-59373BD24046}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B2448EA8-741F-4ED3-AF2B-59373BD24046}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B2448EA8-741F-4ED3-AF2B-59373BD24046}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B2448EA8-741F-4ED3-AF2B-59373BD24046}.Release|Any CPU.Build.0 = Release|Any CPU
+		{959AD604-5D96-4BE4-9DB1-B6A2D06A2C51}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{959AD604-5D96-4BE4-9DB1-B6A2D06A2C51}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{959AD604-5D96-4BE4-9DB1-B6A2D06A2C51}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{959AD604-5D96-4BE4-9DB1-B6A2D06A2C51}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {ECC5240E-6C89-4635-831E-E064BAE71D8C}
+	EndGlobalSection
+EndGlobal
