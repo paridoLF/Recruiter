@@ -12543,11 +12543,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Admin\\Documents\\GitHub\\Recruiter\\Recruit\\Recruit.MVC\\Recruit.MVC.csproj",
+      "projectUniqueName": "C:\\Users\\Admin\\Documents\\GitHub\\Proyecto\\Recruit\\Recruit.MVC\\Recruit.MVC.csproj",
       "projectName": "Recruit.MVC",
-      "projectPath": "C:\\Users\\Admin\\Documents\\GitHub\\Recruiter\\Recruit\\Recruit.MVC\\Recruit.MVC.csproj",
+      "projectPath": "C:\\Users\\Admin\\Documents\\GitHub\\Proyecto\\Recruit\\Recruit.MVC\\Recruit.MVC.csproj",
       "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Admin\\Documents\\GitHub\\Recruiter\\Recruit\\Recruit.MVC\\obj\\",
+      "outputPath": "C:\\Users\\Admin\\Documents\\GitHub\\Proyecto\\Recruit\\Recruit.MVC\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackagesFallback\\",

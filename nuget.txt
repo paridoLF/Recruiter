@@ -1,6 +1,6 @@
 install-package microsoft.entityframeworkcore.sqlserver
 install-package microsoft.entityframeworkcore.tools
-install-package microsoft.visualstudio.web.codegeneration.design
+install-package microsoft.visualstudio.web.codegeneration.desing
 
 
 Scaffold-DbContext "Server=LAB2-A4;Database=Recruit;Trusted_Connection=True;" Microsoft.EntityFrameworkCore.SqlServer -OutputDir Models
