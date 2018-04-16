@@ -8,6 +8,7 @@ namespace Recruit.WebAPI.Models
     {
         public virtual DbSet<TAdmEmpresa> TAdmEmpresa { get; set; }
         public virtual DbSet<TAdmReclutador> TAdmReclutador { get; set; }
+        public virtual DbSet<TAdmConfiguracion> TAdmConfiguracion { get; set; }
         public virtual DbSet<TOfertaReclutador> TOfertaReclutador { get; set; }
         public virtual DbSet<TRecCandidato> TRecCandidato { get; set; }
         public virtual DbSet<TRecCandmail> TRecCandmail { get; set; }
@@ -30,7 +31,7 @@ namespace Recruit.WebAPI.Models
             if (!optionsBuilder.IsConfigured)
             {
 //#warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
-                optionsBuilder.UseSqlServer(@"Server=LAB2-A4;Database=Recruit_DB;Trusted_Connection=True;");
+                optionsBuilder.UseSqlServer(@"Server=LAB2-A14;Database=Recruit_DB;Trusted_Connection=True;");
             }
         }
 
