@@ -9,3 +9,13 @@ C:\Users\Admin\Documents\GitHub\Proyecto\Recruit\Recruit.MVC\obj\Debug\netcoreap
 C:\Users\Admin\Documents\GitHub\Proyecto\Recruit\Recruit.MVC\obj\Debug\netcoreapp2.0\Recruit.MVC.AssemblyInfo.cs
 C:\Users\Admin\Documents\GitHub\Proyecto\Recruit\Recruit.MVC\obj\Debug\netcoreapp2.0\Recruit.MVC.dll
 C:\Users\Admin\Documents\GitHub\Proyecto\Recruit\Recruit.MVC\obj\Debug\netcoreapp2.0\Recruit.MVC.pdb
+C:\Users\Admin\Documents\GitHub\Recruiter\Recruit\Recruit.MVC\bin\Debug\netcoreapp2.0\Recruit.MVC.deps.json
+C:\Users\Admin\Documents\GitHub\Recruiter\Recruit\Recruit.MVC\bin\Debug\netcoreapp2.0\Recruit.MVC.runtimeconfig.json
+C:\Users\Admin\Documents\GitHub\Recruiter\Recruit\Recruit.MVC\bin\Debug\netcoreapp2.0\Recruit.MVC.runtimeconfig.dev.json
+C:\Users\Admin\Documents\GitHub\Recruiter\Recruit\Recruit.MVC\bin\Debug\netcoreapp2.0\Recruit.MVC.dll
+C:\Users\Admin\Documents\GitHub\Recruiter\Recruit\Recruit.MVC\bin\Debug\netcoreapp2.0\Recruit.MVC.pdb
+C:\Users\Admin\Documents\GitHub\Recruiter\Recruit\Recruit.MVC\obj\Debug\netcoreapp2.0\Recruit.MVC.csproj.CoreCompileInputs.cache
+C:\Users\Admin\Documents\GitHub\Recruiter\Recruit\Recruit.MVC\obj\Debug\netcoreapp2.0\Recruit.MVC.AssemblyInfoInputs.cache
+C:\Users\Admin\Documents\GitHub\Recruiter\Recruit\Recruit.MVC\obj\Debug\netcoreapp2.0\Recruit.MVC.AssemblyInfo.cs
+C:\Users\Admin\Documents\GitHub\Recruiter\Recruit\Recruit.MVC\obj\Debug\netcoreapp2.0\Recruit.MVC.dll
+C:\Users\Admin\Documents\GitHub\Recruiter\Recruit\Recruit.MVC\obj\Debug\netcoreapp2.0\Recruit.MVC.pdb

@@ -33,6 +33,7 @@ namespace Recruit.WebAPI.Controllers
         [HttpPost]
         public void Post([FromBody]string value)
         {
+
         }
         
         // PUT: api/Configuracion/5
