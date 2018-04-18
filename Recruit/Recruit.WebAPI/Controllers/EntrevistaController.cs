@@ -9,7 +9,7 @@ using Recruit.WebAPI.Models;
 namespace Recruit.WebAPI.Controllers
 {
     [Produces("application/json")]
-    [Route("api/Entrevista")]
+    [Route("api/[controller]")]
     public class EntrevistaController : Controller
     {
         private readonly RecruitContext _context;
@@ -21,8 +21,8 @@ namespace Recruit.WebAPI.Controllers
         }
 
         // GET: api/Entrevista/5
-        [HttpGet("{id}", Name = "Get")]
-        public TRecEntrevista Get(int id)
+        [HttpGet("{id}", Name = "EntrevistaGet")]
+        public TRecEntrevista EntrevistaGet(int id)
         {
             var entrevista = _context.TRecEntrevista.FirstOrDefault(m => m.Pkentrevista == id);
 

@@ -10,9 +10,8 @@ using Microsoft.AspNetCore.Mvc;
 namespace Recruit.WebAPI.Controllers
 {
     [Produces("application/json")]
-    [Route("api/Reclutador")]
 
-
+    [Route("api/[controller]")]
     public class ReclutadorController : Controller
     {
         private readonly RecruitContext _context;
@@ -21,14 +20,16 @@ namespace Recruit.WebAPI.Controllers
         [HttpGet]
         public IEnumerable<TAdmReclutador> Get()
         {
+          
             return _context.TAdmReclutador.ToList();
 
             //return new string[] { "value1", "value2" };
         }
 
         // GET: api/Reclutador/5
-        [HttpGet("{id}", Name = "Get")]
-        public TAdmReclutador Get(int id)
+        
+        [HttpGet("{id}", Name = "ReclutadorGet")]
+        public TAdmReclutador ReclutadorGet(int id)
         {
             var queryReclutadores = _context.TAdmReclutador.Where(p => p.Pkreclutador == id);
             if (queryReclutadores == null){
@@ -38,6 +39,7 @@ namespace Recruit.WebAPI.Controllers
 
             //return "value";
         }
+        
         
         // POST: api/Reclutador
         [HttpPost]
