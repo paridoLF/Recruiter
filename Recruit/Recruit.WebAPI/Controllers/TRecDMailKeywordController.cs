@@ -9,7 +9,7 @@ using Recruit.WebAPI.Models;
 namespace Recruit.WebAPI.Controllers
 {
     [Produces("application/json")]
-    [Route("api/TRecDMailKeyword")]
+    [Route("api/[controller]")]
     public class TRecDMailKeywordController : Controller
     {
         private readonly RecruitContext _context;
@@ -22,8 +22,8 @@ namespace Recruit.WebAPI.Controllers
         }
 
         // GET: api/TRecDMailKeyword/5
-        [HttpGet("{id}", Name = "Get")]
-        public TRecDetmailkword Get(int id)
+        [HttpGet("{id}", Name = "TRecDMailKeywordGet")]
+        public TRecDetmailkword TRecDetmailkwordGet(int id)
         {
             var Dmkword = _context.TRecDetmailkword.FirstOrDefault(TRecDetmailkword => TRecDetmailkword.Pkdetmailkword == id);
 
