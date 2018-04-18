@@ -14,7 +14,13 @@ namespace Recruit.WebAPI.Controllers
     [Route("api/[controller]")]
     public class ReclutadorController : Controller
     {
-        private readonly RecruitContext _context;
+        private readonly Recruit_DBContext _context;
+
+
+        public ReclutadorController(Recruit_DBContext context) {
+            _context = context;
+
+        }
 
         // GET: api/Reclutador
         [HttpGet]
