@@ -9,21 +9,21 @@ using Recruit.WebAPI.Models;
 namespace Recruit.WebAPI.Controllers
 {
     [Produces("application/json")]
-    [Route("api/Menu")]
+    [Route("api/[controller]")]
     public class MenuController : Controller
     {
         private readonly RecruitContext _context;
         // GET: api/Menu
         [HttpGet]
-        public IEnumerable<TSegMenu> Get()
+        public IEnumerable<TSegMenu> MenuGetAll()
         {
             return _context.TSegMenu.ToList();
             // return new string[] { "value1", "value2" };
         }
 
         // GET: api/Menu/5
-        [HttpGet("{id}", Name = "Get")]
-        public TSegMenu Get(int id)
+        [HttpGet("{id}", Name = "MenuGet")]
+        public TSegMenu MenuGet(int id)
         {
 
             var list = _context.TSegMenu.Where(TSegMenu => TSegMenu.Pkmenu == id).FirstOrDefault();

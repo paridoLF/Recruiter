@@ -9,21 +9,22 @@ using Recruit.WebAPI.Models;
 namespace Recruit.WebAPI.Controllers
 {
     [Produces("application/json")]
-    [Route("api/TRecCandidato")]
+    [Route("api/[controller]")]
     public class TRecCandidatoController : Controller
     {
         private readonly RecruitContext _context;
 
         // GET: api/TRecCandidato
+
         [HttpGet]
         public IEnumerable<TRecCandidato> Get()
         {
             return _context.TRecCandidato.ToList();
         }
 
-        // GET: api/TRecCandidato/5
-        [HttpGet("{id}", Name = "Get")]
-        public TRecCandidato Get(int id)
+
+        [HttpGet("{id}", Name = "TRecCandidatoGet")]
+        public TRecCandidato TRecCandidatoGet(int id)
         {
             var Candidato = _context.TRecCandidato.FirstOrDefault(TRecCandidato => TRecCandidato.Pkcandidato == id);
 
@@ -43,9 +44,10 @@ namespace Recruit.WebAPI.Controllers
             _context.TRecCandidato.Add(value);
             _context.SaveChanges();
         }
-        
-        
+
+
         // PUT: api/TRecCandidato/5
+        //[HttpPut("{id}")]
         [HttpPut("{id}")]
         public void Put(int id, [FromBody]TRecCandidato value)
         {
@@ -61,7 +63,7 @@ namespace Recruit.WebAPI.Controllers
 
             _context.SaveChanges();
         }
-        
+
         // DELETE: api/ApiWithActions/5
         [HttpDelete("{id}")]
         public void Delete(int id)

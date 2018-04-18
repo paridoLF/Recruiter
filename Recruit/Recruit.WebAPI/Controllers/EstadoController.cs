@@ -9,7 +9,7 @@ using Recruit.WebAPI.Models;
 namespace Recruit.WebAPI.Controllers
 {
     [Produces("application/json")]
-    [Route("api/Estado")]
+    [Route("api/[controller]")]
     public class EstadoController : Controller
     {
         private readonly RecruitContext _context;   
@@ -21,8 +21,8 @@ namespace Recruit.WebAPI.Controllers
         }
 
         // GET: api/Estado/5
-        [HttpGet("{id}", Name = "Get")]
-        public TRecEstado Get(int id)
+        [HttpGet("{id}", Name = "EstadoGet")]
+        public TRecEstado EstadoGet(int id)
         {
            var estado = _context.TRecEstado.FirstOrDefault(e => e.Pkestado == id);
            if (estado == null)
@@ -53,8 +53,8 @@ namespace Recruit.WebAPI.Controllers
                 _context.SaveChanges();
             }
         }
-        
-        // DELETE: api/ApiWithActions/5
+
+        // DELETE: api/Estado/5
         [HttpDelete("{id}")]
         public void Delete(int id, [FromBody]TRecEstado value)
         {

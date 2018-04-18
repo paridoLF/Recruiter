@@ -9,7 +9,7 @@ using Recruit.WebAPI.Models;
 namespace Recruit.WebAPI.Controllers
 {
     [Produces("application/json")]
-    [Route("api/Idioma")]
+    [Route("api/[controller]")]
     public class IdiomaController : Controller
     {
         private readonly RecruitContext _context;
@@ -21,8 +21,8 @@ namespace Recruit.WebAPI.Controllers
         }
 
         // GET: api/Idioma/5
-        [HttpGet("{id}", Name = "Get")]
-        public TRecIdioma Get(int id)
+        [HttpGet("{id}", Name = "IdiomaGet")]
+        public TRecIdioma IdiomaGet(int id)
         {
             var idioma = _context.TRecIdioma.FirstOrDefault(e => e.Pkidioma == id);
             if (idioma == null)

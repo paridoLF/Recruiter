@@ -8,5 +8,6 @@ namespace Recruit.WebAPI.Models
     {
         public string CORREOCONFIGURACION { get; set; }
         public string PATHCONFIGURACION { get; set; }
+        public int PKCONFIGURACION { get; set; }
     }
 }
