@@ -61,8 +61,10 @@ namespace Recruit.WebAPI.Controllers
             cliente.Telefonoreclutador = value.Telefonoreclutador;
             cliente.Estadoreclutador = value.Estadoreclutador;
             cliente.Correoreclutador = value.Correoreclutador;
-          
-     
+
+
+            _context.Update(cliente);
+
             // Guardamos los cambios
             _context.SaveChanges();
 

@@ -63,6 +63,7 @@ namespace Recruit.WebAPI.Controllers
             OfertaTrabajo.Salario = value.Salario;
             OfertaTrabajo.Idioma = value.Idioma;
 
+            _context.Update(OfertaTrabajo);
             _context.SaveChanges();
         }
         
