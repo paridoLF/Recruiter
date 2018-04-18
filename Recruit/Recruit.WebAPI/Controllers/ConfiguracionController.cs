@@ -9,7 +9,7 @@ using Recruit.WebAPI.Models;
 namespace Recruit.WebAPI.Controllers
 {
     [Produces("application/json")]
-    [Route("api/Configuracion")]
+    [Route("api/[controller]")]
     public class ConfiguracionController : Controller
     {
         private readonly RecruitContext _context;
@@ -22,32 +22,48 @@ namespace Recruit.WebAPI.Controllers
             return _context.TAdmConfiguracion.ToList();
         }
 
-        // GET: api/Configuracion/5
+        //// GET: api/Configuracion/5
         [HttpGet("{id}", Name = "Get")]
-        //public TAdmConfiguracion Get (String TAdmConfiguracion)
-        //{
-        //    var TAdmConfiguracion = _context.TAdmConfiguracion.FirstOrDefault();
-        //}
+        public TAdmConfiguracion Get(int id)
+        {
+            var TAdmConfiguracion = _context.TAdmConfiguracion.FirstOrDefault(c => c.PKCONFIGURACION == id);
+            if (TAdmConfiguracion == null)
+            {
+                return null;
+            }
+
+            return TAdmConfiguracion;
+        }
 
         // POST: api/Configuracion
         [HttpPost]
-        public void Post([FromBody]string value)
+        public void Post([FromBody]TAdmConfiguracion value)
         {
-
+            _context.TAdmConfiguracion.Add(value);
+            _context.SaveChanges();
         }
         
         // PUT: api/Configuracion/5
         [HttpPut("{id}")]
-        //public void Put(TAdmConfiguracion, [FromBody]string value)
-        //{
+      
+        public void Put(int id, [FromBody] TAdmConfiguracion value)
+        {
+            var configuarcion = _context.TAdmConfiguracion.FirstOrDefault(c => c.PKCONFIGURACION == id);
+            configuarcion.CORREOCONFIGURACION = value.CORREOCONFIGURACION;
+            configuarcion.PATHCONFIGURACION = value.PATHCONFIGURACION;
+            _context.TAdmConfiguracion.Update(configuarcion);
+            _context.SaveChanges();
 
+        }
 
-        //}
-        
         // DELETE: api/ApiWithActions/5
         [HttpDelete("{id}")]
         public void Delete(int id)
         {
+            var configuracion = _context.TAdmConfiguracion.Where(c => c.PKCONFIGURACION == id).First();
+
+            _context.TAdmConfiguracion.Remove(configuracion);
+            _context.SaveChanges();
         }
     }
 }
