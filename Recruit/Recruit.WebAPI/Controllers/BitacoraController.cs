@@ -9,22 +9,22 @@ using Recruit.WebAPI.Models;
 namespace Recruit.WebAPI.Controllers
 {
     [Produces("application/json")]
-    [Route("api/Bitacora")]
+    [Route("api/[controller]")]
     public class BitacoraController : Controller
     {
         private readonly RecruitContext _context;
 
         // GET: api/Bitacora   Obtener listado
         [HttpGet]
-        public IEnumerable<TSegBitacora> Get()
+        public IEnumerable<TSegBitacora> BitacoraGetAll()
         {
             return _context.TSegBitacora.ToList();
             //return new string[] { "value1", "value2" };
         }
 
         // GET: api/Bitacora/5  Consulta especifica
-        [HttpGet("{id}", Name = "Get")]
-        public TSegBitacora Get(int id)
+        [HttpGet("{id}", Name = "BitacoraGet")]
+        public TSegBitacora BitacoraGet(int id)
         {
             var vList = _context.TSegBitacora.Where(TSegBitacora => TSegBitacora.Pkbitacora == id).FirstOrDefault();
 
@@ -36,6 +36,7 @@ namespace Recruit.WebAPI.Controllers
         
         // POST: api/Bitacora     Insertar registro
         [HttpPost]
+        [Route("api/Bitacora/{id}")]
         public void Post([FromBody]TSegBitacora value)
         {
             _context.TSegBitacora.Add(value);
@@ -44,6 +45,7 @@ namespace Recruit.WebAPI.Controllers
         
         // PUT: api/Bitacora/5   Actualizar registro
         [HttpPut("{id}")]
+        [Route("api/Bitacora/{id}")]
         public void Put(int id, [FromBody]TSegBitacora value)
         {
             var vBitacora = _context.TSegBitacora.FirstOrDefault(t => t.Pkbitacora == id);
@@ -64,6 +66,7 @@ namespace Recruit.WebAPI.Controllers
         
         // DELETE: api/ApiWithActions/5 Borrar el registro
         [HttpDelete("{id}")]
+        [Route("api/Bitacora/{id}")]
         public void Delete(int id)
         {
             var vBitacora = _context.TSegBitacora.FirstOrDefault(t => t.Pkbitacora == id);
