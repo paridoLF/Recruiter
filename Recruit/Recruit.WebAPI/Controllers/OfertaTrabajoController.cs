@@ -10,7 +10,7 @@ using Recruit.WebAPI.Models;
 namespace Recruit.WebAPI.Controllers
 {
     [Produces("application/json")]
-    [Route("api/OfertaTrabajo")]
+    [Route("api/[controller]")]
 
     public class OfertaTrabajoController : Controller
     {
@@ -18,15 +18,18 @@ namespace Recruit.WebAPI.Controllers
 
         // GET: api/OfertaTrabajo
         [HttpGet]
+        
         public IEnumerable<TRecOfertatrabajo> Get()
         {
             return _context.TRecOfertatrabajo.ToList();
             //return new string[] { "value1", "value2" };
         }
 
+        
         // GET: api/OfertaTrabajo/5
-        [HttpGet("{OfertaTrabajoid}")]
-        public TRecOfertatrabajo Get(int OfertaTrabajoId)
+        [HttpGet("{OfertaTrabajoid}", Name = "OfertaTrabajoGet")]
+       
+        public TRecOfertatrabajo OfertaTrabajoGet(int OfertaTrabajoId)
         {
             var queryOfertaTrabajo = _context.TRecOfertatrabajo.Where(p => p.Pkofertatrabajo == OfertaTrabajoId);
 
@@ -41,6 +44,7 @@ namespace Recruit.WebAPI.Controllers
         
         // POST: api/OfertaTrabajo
         [HttpPost]
+        
         public void Post([FromBody]TRecOfertatrabajo value)
         {
             _context.TRecOfertatrabajo.Add(value);
@@ -50,6 +54,7 @@ namespace Recruit.WebAPI.Controllers
         
         // PUT: api/OfertaTrabajo/5
         [HttpPut("{id}")]
+       
         public void Put(int id, [FromBody]TRecOfertatrabajo value)
         {
             var OfertaTrabajo = _context.TRecOfertatrabajo.Where(p => p.Pkofertatrabajo == id).First();
@@ -70,6 +75,7 @@ namespace Recruit.WebAPI.Controllers
         
         // DELETE: api/ApiWithActions/5
         [HttpDelete("{id}")]
+        [Route("api/OfertaTrabajo/EliminarOferta")]
         public void Delete(int idOferta)
         {
             var OfertaTrabajo = _context.TRecOfertatrabajo.Where(p => p.Pkofertatrabajo == idOferta).First();
