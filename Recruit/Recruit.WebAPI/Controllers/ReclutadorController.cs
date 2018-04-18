@@ -11,6 +11,8 @@ namespace Recruit.WebAPI.Controllers
 {
     [Produces("application/json")]
     [Route("api/Reclutador")]
+
+
     public class ReclutadorController : Controller
     {
         private readonly RecruitContext _context;
@@ -61,8 +63,10 @@ namespace Recruit.WebAPI.Controllers
             cliente.Telefonoreclutador = value.Telefonoreclutador;
             cliente.Estadoreclutador = value.Estadoreclutador;
             cliente.Correoreclutador = value.Correoreclutador;
-          
-     
+
+
+            _context.Update(cliente);
+
             // Guardamos los cambios
             _context.SaveChanges();
 
