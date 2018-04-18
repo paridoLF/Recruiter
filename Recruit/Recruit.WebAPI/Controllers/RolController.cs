@@ -13,7 +13,14 @@ namespace Recruit.WebAPI.Controllers
     public class RolController : Controller
     {
 
-        private readonly RecruitContext _context;
+        private readonly Recruit_DBContext _context;
+
+        public RolController(Recruit_DBContext context)
+        {
+            _context = context;
+
+        }
+
         // GET: api/Rol
         [HttpGet]
         public IEnumerable<TSegRol> RolGetAll()
