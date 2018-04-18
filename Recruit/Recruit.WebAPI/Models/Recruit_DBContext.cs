@@ -36,20 +36,20 @@ namespace Recruit.WebAPI.Models
         {
             modelBuilder.Entity<TAdmConfiguracion>(entity =>
             {
-                entity.HasKey(e => e.Pkconfiguracion);
+                entity.HasKey(e => e.PKCONFIGURACION);
 
                 entity.ToTable("t_adm_configuracion");
 
-                entity.Property(e => e.Pkconfiguracion)
+                entity.Property(e => e.PKCONFIGURACION)
                     .HasColumnName("PKCONFIGURACION")
                     .ValueGeneratedNever();
 
-                entity.Property(e => e.Correoconfiguracion)
+                entity.Property(e => e.CORREOCONFIGURACION)
                     .IsRequired()
                     .HasColumnName("CORREOCONFIGURACION")
                     .HasColumnType("nchar(50)");
 
-                entity.Property(e => e.Pathconfiguracion)
+                entity.Property(e => e.PATHCONFIGURACION)
                     .IsRequired()
                     .HasColumnName("PATHCONFIGURACION")
                     .HasMaxLength(100);
