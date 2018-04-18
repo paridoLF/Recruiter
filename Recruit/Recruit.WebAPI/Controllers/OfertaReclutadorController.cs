@@ -9,7 +9,7 @@ using Recruit.WebAPI.Models;
 namespace Recruit.WebAPI.Controllers
 {
     [Produces("application/json")]
-    [Route("api/OfertaReclutador")]
+    [Route("api/[controller]")]
     public class OfertaReclutadorController : Controller
     {
 
@@ -25,10 +25,10 @@ namespace Recruit.WebAPI.Controllers
         }
 
         // GET: api/OfertaReclutador/5/5
-        [HttpGet("{oid}/{rid}", Name = "Get")]
+        [HttpGet("{oid}/{rid}", Name = "OfertaReclutadorGet")]
         
 
-        public TOfertaReclutador Get(int OfertaId,int ReclutadorId)
+        public TOfertaReclutador OfertaReclutadorGet(int OfertaId,int ReclutadorId)
         {
             var queryOfertaReclutador = _context.TOfertaReclutador.Where(p => p.Pkofertatrabajo == OfertaId && p.Pkreclutador == ReclutadorId);
 

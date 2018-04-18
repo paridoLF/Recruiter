@@ -9,22 +9,22 @@ using Recruit.WebAPI.Models;
 namespace Recruit.WebAPI.Controllers
 {
     [Produces("application/json")]
-    [Route("api/Rol")]
+    [Route("api/[controller]")]
     public class RolController : Controller
     {
 
         private readonly RecruitContext _context;
         // GET: api/Rol
         [HttpGet]
-        public IEnumerable<TSegRol> Get()
+        public IEnumerable<TSegRol> RolGetAll()
         {
             return _context.TSegRol.ToList();
             //return new string[] { "value1", "value2" };
         }
 
         // GET: api/Rol/5
-        [HttpGet("{id}", Name = "Get")]
-        public TSegRol Get(int id)
+        [HttpGet("{id}", Name = "GetRol")]
+        public TSegRol RolGet(int id)
         {
             var vList = _context.TSegRol.Where(TSegRol => TSegRol.Pkrol == id).FirstOrDefault();
 
