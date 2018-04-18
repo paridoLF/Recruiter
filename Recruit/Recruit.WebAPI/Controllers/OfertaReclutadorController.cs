@@ -27,6 +27,7 @@ namespace Recruit.WebAPI.Controllers
         // GET: api/OfertaReclutador/5/5
         [HttpGet("{oid}/{rid}", Name = "Get")]
         
+
         public TOfertaReclutador Get(int OfertaId,int ReclutadorId)
         {
             var queryOfertaReclutador = _context.TOfertaReclutador.Where(p => p.Pkofertatrabajo == OfertaId && p.Pkreclutador == ReclutadorId);

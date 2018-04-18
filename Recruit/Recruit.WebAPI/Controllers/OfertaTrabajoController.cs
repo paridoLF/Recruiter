@@ -11,6 +11,7 @@ namespace Recruit.WebAPI.Controllers
 {
     [Produces("application/json")]
     [Route("api/OfertaTrabajo")]
+
     public class OfertaTrabajoController : Controller
     {
         private readonly RecruitContext _context;
