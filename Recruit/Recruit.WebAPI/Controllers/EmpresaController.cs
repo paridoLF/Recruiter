@@ -2,7 +2,7 @@
 // Controlador para proyecto Recrui
 // Desarrollador: Equipo Pedro Leiva/Rubén Vargas
 // Abril 2018
-//=================================
+//=================================//
 
 using System;
 using System.Collections.Generic;
