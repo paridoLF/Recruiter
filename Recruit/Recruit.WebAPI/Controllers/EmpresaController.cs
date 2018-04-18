@@ -15,7 +15,7 @@ using Recruit.WebAPI.Models;
 namespace Recruit.WebAPI.Controllers
 {
     [Produces("application/json")]
-    [Route("api/Empresa")]
+    [Route("api/[controller]")]
     public class EmpresaController : Controller
     {
         private readonly RecruitContext _context;
@@ -23,7 +23,6 @@ namespace Recruit.WebAPI.Controllers
 
         // GET: api/Empresa
         [HttpGet]
-        [Route("api/Empresa")]
         public IEnumerable<TAdmEmpresa> Get()
         {
             return _context.TAdmEmpresa.ToList();
@@ -31,7 +30,7 @@ namespace Recruit.WebAPI.Controllers
 
         // GET: api/Empresa/5
         [HttpGet("{id}", Name = "EmpresaGet")]
-        public TAdmEmpresa Get(int id)
+        public TAdmEmpresa EmpresaGet(int id)
         {
             var empresa = _context.TAdmEmpresa.FirstOrDefault(e => e.Pkempresa == id);
             if (empresa == null)
@@ -43,7 +42,6 @@ namespace Recruit.WebAPI.Controllers
 
         // POST: api/Empresa
         [HttpPost]
-        [Route("api/Empresa")]
         public void Post([FromBody] TAdmEmpresa value)
         {
             _context.TAdmEmpresa.Add(value);
@@ -52,7 +50,6 @@ namespace Recruit.WebAPI.Controllers
 
         // PUT: api/Empresa/5
         [HttpPut("{id}")]
-        [Route("api/Empresa/{id}")]
         public void Put(int id, [FromBody] TAdmEmpresa value)
         {
             var empresa = _context.TAdmEmpresa.FirstOrDefault(e => e.Pkempresa == id);
@@ -68,7 +65,6 @@ namespace Recruit.WebAPI.Controllers
 
         // DELETE: api/ApiWithActions/5
         [HttpDelete("{id}")] 
-        [Route("api/Empresa/{id}")]
         public void Delete(int id)
         {
             var empresa = _context.TAdmEmpresa.Where(e => e.Pkempresa == id).First();
