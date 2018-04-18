@@ -2,7 +2,7 @@
 // Controlador para proyecto Recruit
 // Desarrollador: Equipo Pedro Leiva/Rubén Vargas
 // Abril 2018
-//=================================///
+//=================================//
 
 using System;
 using System.Collections.Generic;
@@ -20,6 +20,12 @@ namespace Recruit.WebAPI.Controllers
     {
         private readonly RecruitContext _context;
 
+
+        public EmpresaController(RecruitContext context)
+        {
+            _context = context;
+
+        }
 
         // GET: api/Empresa
         [HttpGet]
