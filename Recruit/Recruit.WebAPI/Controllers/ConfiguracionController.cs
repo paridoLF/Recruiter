@@ -35,7 +35,7 @@ namespace Recruit.WebAPI.Controllers
             return TAdmConfiguracion;
         }
 
-        // POST: api/Configuracion
+        // POST: api/Configuracion/
         [HttpPost]
         public void Post([FromBody]TAdmConfiguracion value)
         {
