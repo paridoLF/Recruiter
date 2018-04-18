@@ -5,7 +5,7 @@ namespace Recruit.WebAPI.Models
 {
     public partial class TAdmReclutador
     {
-        public TAdmReclutador()
+        public TAdmReclutador() 
         {
             TOfertaReclutador = new HashSet<TOfertaReclutador>();
         }

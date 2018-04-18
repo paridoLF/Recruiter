@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace Recruit.WebAPI.Models
 {
-    public partial class TRecCandidato
+    public partial class TRecCandidato 
     {
         public int Pkcandidato { get; set; }
         public string Nombre { get; set; }

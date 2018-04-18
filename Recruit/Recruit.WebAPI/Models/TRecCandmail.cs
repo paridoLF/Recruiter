@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace Recruit.WebAPI.Models
 {
-    public partial class TRecCandmail
+    public partial class TRecCandmail 
     {
         public TRecCandmail()
         {

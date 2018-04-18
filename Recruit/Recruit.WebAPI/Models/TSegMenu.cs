@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Recruit.WebAPI.Models
+namespace Recruit.WebAPI.Models 
 {
     public partial class TSegMenu
     {
