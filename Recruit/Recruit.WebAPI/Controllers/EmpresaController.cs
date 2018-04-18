@@ -1,5 +1,5 @@
 ﻿// Curso MVC
-// Controlador para proyecto Recrui
+// Controlador para proyecto Recruit
 // Desarrollador: Equipo Pedro Leiva/Rubén Vargas
 // Abril 2018
 //=================================//
