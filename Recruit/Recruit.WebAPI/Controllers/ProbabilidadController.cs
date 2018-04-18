@@ -9,7 +9,7 @@ using Recruit.WebAPI.Models;
 namespace Recruit.WebAPI.Controllers
 {
     [Produces("application/json")]
-    [Route("api/robabilidad")]
+    [Route("api/[controller]")]
     public class ProbabilidadController : Controller
     {
         private readonly RecruitContext _context;
@@ -21,8 +21,8 @@ namespace Recruit.WebAPI.Controllers
         }
 
         // GET: api/Probabilidad/5
-        [HttpGet("{id}", Name = "Get")]
-        public TRecProbabilidad Get(int id)
+        [HttpGet("{id}", Name = "ProbabilidadGet")]
+        public TRecProbabilidad ProbabilidadGet(int id)
         {
             var probabilidad = _context.TRecProbabilidad.FirstOrDefault(m => m.Pkprobabilidad == id);
 
