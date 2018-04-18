@@ -18,10 +18,10 @@ namespace Recruit.WebAPI.Controllers
     [Route("api/[controller]")]
     public class EmpresaController : Controller
     {
-        private readonly RecruitContext _context;
+        private readonly Recruit_DBContext _context;
 
 
-        public EmpresaController(RecruitContext context)
+        public EmpresaController(Recruit_DBContext context)
         {
             _context = context;
 
