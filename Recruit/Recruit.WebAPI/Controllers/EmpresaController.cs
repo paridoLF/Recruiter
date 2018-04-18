@@ -2,7 +2,7 @@
 // Controlador para proyecto Recruit
 // Desarrollador: Equipo Pedro Leiva/Rubén Vargas
 // Abril 2018
-//=================================//
+//=================================///
 
 using System;
 using System.Collections.Generic;
@@ -15,7 +15,7 @@ using Recruit.WebAPI.Models;
 namespace Recruit.WebAPI.Controllers
 {
     [Produces("application/json")]
-    [Route("api/Empresa")]
+    [Route("api/[controller]")]
     public class EmpresaController : Controller
     {
         private readonly RecruitContext _context;
@@ -29,8 +29,8 @@ namespace Recruit.WebAPI.Controllers
         }
 
         // GET: api/Empresa/5
-        [HttpGet("{id}", Name = "Get")]
-        public TAdmEmpresa Get(int id)
+        [HttpGet("{id}", Name = "EmpresaGet")]
+        public TAdmEmpresa EmpresaGet(int id)
         {
             var empresa = _context.TAdmEmpresa.FirstOrDefault(e => e.Pkempresa == id);
             if (empresa == null)
@@ -64,7 +64,7 @@ namespace Recruit.WebAPI.Controllers
         }
 
         // DELETE: api/ApiWithActions/5
-        [HttpDelete("{id}")]
+        [HttpDelete("{id}")] 
         public void Delete(int id)
         {
             var empresa = _context.TAdmEmpresa.Where(e => e.Pkempresa == id).First();
