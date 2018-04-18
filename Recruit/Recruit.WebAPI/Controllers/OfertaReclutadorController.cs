@@ -13,7 +13,11 @@ namespace Recruit.WebAPI.Controllers
     public class OfertaReclutadorController : Controller
     {
 
-        private readonly RecruitContext _context;
+        private readonly Recruit_DBContext _context;
+
+        public OfertaReclutadorController(Recruit_DBContext context) {
+            _context = context;
+        }
 
         // GET: api/OfertaReclutador
         [HttpGet]
