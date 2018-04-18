@@ -10,7 +10,7 @@ using Recruit.WebAPI.Models;
 namespace Recruit.WebAPI.Controllers
 {
     [Produces("application/json")]
-    [Route("api/TRecCandmail")]
+    [Route("api/[controller]")]
     public class TRecCandmailController : Controller
     {
         private readonly RecruitContext _context;
@@ -22,8 +22,8 @@ namespace Recruit.WebAPI.Controllers
         }
 
         // GET: api/TRecCandmail/5
-        [HttpGet("{idx}", Name = "Get")]
-        public TRecCandmail Get(int idx)
+        [HttpGet("{idx}", Name = "TRecCandmailGet")]
+        public TRecCandmail TRecCandmail(int idx)
         {
             var varDatos = _context.TRecCandmail.FirstOrDefault(TRecCandmail => TRecCandmail.Pkcandmail == idx);
             if (varDatos == null){
