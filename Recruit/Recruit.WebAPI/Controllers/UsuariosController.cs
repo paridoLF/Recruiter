@@ -10,24 +10,24 @@ using Recruit.WebAPI.Models;
 namespace Recruit.WebAPI.Controllers
 {
     [Produces("application/json")]
-    [Route("api/Usuarios")]
+    [Route("api/[controller]")]
 
     public class UsuariosController : Controller
     {
-        private readonly RecruitContext _context;
+        private readonly Recruit_DBContext _context;
 
 
         // GET: api/Usuarios
         [HttpGet]
-        public IEnumerable<TSegUsuario> Get()
+        public IEnumerable<TSegUsuario> UsuariosGetAll()
         {
             return _context.TSegUsuario.ToList();
             // return new string[] { "value1", "value2" };
         }
 
         // GET: api/Usuarios/5
-        [HttpGet("{id}", Name = "Get")]
-        public TSegUsuario Get(int id)
+        [HttpGet("{id}", Name = "UsuariosGet")]
+        public TSegUsuario UsuariosGet(int id)
         {
 
             var list = _context.TSegUsuario.Where(TSegUsuario => TSegUsuario.Pkusuario == id).FirstOrDefault();
