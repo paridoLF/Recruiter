@@ -12,7 +12,14 @@ namespace Recruit.WebAPI.Controllers
     [Route("api/[controller]")]
     public class MenuController : Controller
     {
-        private readonly RecruitContext _context;
+        private readonly Recruit_DBContext _context;
+
+        public MenuController(Recruit_DBContext context)
+        {
+            _context = context;
+
+        }
+
         // GET: api/Menu
         [HttpGet]
         public IEnumerable<TSegMenu> MenuGetAll()

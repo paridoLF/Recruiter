@@ -21,6 +21,12 @@ namespace Recruit.WebAPI.Controllers
         private readonly RecruitContext _context;
 
 
+        public EmpresaController(RecruitContext context)
+        {
+            _context = context;
+
+        }
+
         // GET: api/Empresa
         [HttpGet]
         public IEnumerable<TAdmEmpresa> Get()

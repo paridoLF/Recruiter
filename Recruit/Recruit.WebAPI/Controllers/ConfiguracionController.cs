@@ -12,7 +12,13 @@ namespace Recruit.WebAPI.Controllers
     [Route("api/[controller]")]
     public class ConfiguracionController : Controller
     {
-        private readonly RecruitContext _context;
+        private readonly Recruit_DBContext _context;
+
+        public ConfiguracionController(Recruit_DBContext context)
+        {
+            _context = context;
+
+        }
 
         // GET: api/Configuracion
         [HttpGet]
@@ -23,7 +29,7 @@ namespace Recruit.WebAPI.Controllers
         }
 
         //// GET: api/Configuracion/5
-        [HttpGet("{id}", Name = "Get")]
+        [HttpGet("{id}", Name = "ConfiguracionGet")]
         public TAdmConfiguracion Get(int id)
         {
             var TAdmConfiguracion = _context.TAdmConfiguracion.FirstOrDefault(c => c.PKCONFIGURACION == id);
