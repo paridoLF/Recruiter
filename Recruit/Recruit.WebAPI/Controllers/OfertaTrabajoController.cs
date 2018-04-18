@@ -11,6 +11,7 @@ namespace Recruit.WebAPI.Controllers
 {
     [Produces("application/json")]
     [Route("api/OfertaTrabajo")]
+
     public class OfertaTrabajoController : Controller
     {
         private readonly RecruitContext _context;
@@ -63,6 +64,7 @@ namespace Recruit.WebAPI.Controllers
             OfertaTrabajo.Salario = value.Salario;
             OfertaTrabajo.Idioma = value.Idioma;
 
+            _context.Update(OfertaTrabajo);
             _context.SaveChanges();
         }
         
