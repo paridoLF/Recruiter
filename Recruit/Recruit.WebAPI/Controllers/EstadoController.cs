@@ -12,7 +12,14 @@ namespace Recruit.WebAPI.Controllers
     [Route("api/[controller]")]
     public class EstadoController : Controller
     {
-        private readonly RecruitContext _context;   
+        private readonly Recruit_DBContext _context;
+
+
+        public EstadoController(Recruit_DBContext context)
+        {
+            _context = context;
+
+        }
         // GET: api/Estado
         [HttpGet]
         public IEnumerable<TRecEstado> Get()

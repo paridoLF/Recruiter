@@ -12,7 +12,13 @@ namespace Recruit.WebAPI.Controllers
     [Route("api/[controller]")]
     public class ProbabilidadController : Controller
     {
-        private readonly RecruitContext _context;
+        private readonly Recruit_DBContext _context;
+
+        public ProbabilidadController(Recruit_DBContext context)
+        {
+            _context = context;
+
+        }
         // GET: api/Probabilidad
         [HttpGet]
         public IEnumerable<TRecProbabilidad> Get()

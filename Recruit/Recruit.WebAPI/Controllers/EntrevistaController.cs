@@ -12,7 +12,13 @@ namespace Recruit.WebAPI.Controllers
     [Route("api/[controller]")]
     public class EntrevistaController : Controller
     {
-        private readonly RecruitContext _context;
+        private readonly Recruit_DBContext _context;
+
+        public EntrevistaController(Recruit_DBContext context)
+        {
+            _context = context;
+
+        }
         // GET: api/Entrevista
         [HttpGet]
         public IEnumerable<TRecEntrevista> Get()
