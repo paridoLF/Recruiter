@@ -1,4 +1,10 @@
-﻿using System;
+﻿// Curso MVC
+// Controlador para proyecto Recrui
+// Desarrollador: Equipo Pedro Leiva/Rubén Vargas
+// Abril 2018
+//=================================
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
