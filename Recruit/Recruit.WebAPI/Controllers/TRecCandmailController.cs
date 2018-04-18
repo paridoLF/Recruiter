@@ -23,7 +23,7 @@ namespace Recruit.WebAPI.Controllers
 
         // GET: api/TRecCandmail/5
         [HttpGet("{idx}", Name = "TRecCandmailGet")]
-        public TRecCandmail TRecCandmail(int idx)
+        public TRecCandmail TRecCandmailGet(int idx)
         {
             var varDatos = _context.TRecCandmail.FirstOrDefault(TRecCandmail => TRecCandmail.Pkcandmail == idx);
             if (varDatos == null){
