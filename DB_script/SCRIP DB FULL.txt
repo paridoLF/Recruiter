@@ -87,7 +87,7 @@ CREATE TABLE [dbo].[t_rec_candidato](
 	[ESTADO] [int] NOT NULL,
 	[TELEFONO] [nvarchar](10) NOT NULL,
 	[CORREO] [nvarchar](50) NOT NULL,
-	[BLACKLIST] [bit] NOT NULL,
+	[BLACKLIST] [int] NOT NULL,
 	[DIRECCION] [nvarchar](50) NOT NULL,
 	[AÑOSEXPERIENCIA] [int] NOT NULL,
 	[ESTADOCIVIL] [int] NOT NULL,
