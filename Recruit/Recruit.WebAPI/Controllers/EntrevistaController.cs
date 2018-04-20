@@ -51,15 +51,24 @@ namespace Recruit.WebAPI.Controllers
         [HttpPut("{id}")]
         public void Put(int id, [FromBody]TRecEntrevista value)
         {
-            var entrevista = _context.TRecEntrevista.FirstOrDefault(m => m.Pkentrevista == id);
+            var entrevista = _context.TRecEntrevista.Where(p => p.Pkentrevista == id).First();
+            //_context.TRecOfertatrabajo.Where(p => p.Pkofertatrabajo == id).First();
 
-            if (entrevista != null)
-            {
-                entrevista = value;
-                entrevista.Pkentrevista = id;
-                _context.Update(entrevista);
+            //if (entrevista != null)
+            //{
+            //    entrevista.Pkentrevista = id;
+                entrevista.Expectsalentrevista = value.Expectsalentrevista;
+                entrevista.Experienciaentrevita = value.Experienciaentrevita;
+                entrevista.Referenciasentrevista = value.Referenciasentrevista;
+                entrevista.Trabajoantentrevista = value.Trabajoantentrevista;
+                entrevista.Fkcandidato = value.Fkcandidato;
+                entrevista.Fkestado = value.Fkestado;
+                entrevista.Fkidioma = value.Fkidioma;
+                entrevista.Fkprobabilidad = value.Fkprobabilidad;
+
+                //_context.Update(entrevista);
                 _context.SaveChanges();
-            }
+            //}
         }
 
         // DELETE: api/ApiWithActions/5
