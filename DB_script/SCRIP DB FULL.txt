@@ -22,7 +22,7 @@ SET QUOTED_IDENTIFIER ON
 GO
 
 CREATE TABLE [dbo].[t_adm_empresa](
-	[PKEMPRESA] [int] IDENTITY(1,1) NOT NULL,
+	[PKEMPRESA] [int] NOT NULL,
 	[NOMBREEMPRESA] [nvarchar](50) NOT NULL,
 	[DIRECCIONEMPRESA] [nvarchar](50) NULL,
 	[TELEFONOEMPRESA] [nvarchar](15) NULL,
@@ -34,21 +34,6 @@ CREATE TABLE [dbo].[t_adm_empresa](
 	[PKEMPRESA] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
-GO
-
-ALTER TABLE [dbo].[t_adm_empresa] ADD  CONSTRAINT [DF_t_adm_empresa_DIRECCIONEMPRESA]  DEFAULT (N'Sin Información') FOR [DIRECCIONEMPRESA]
-GO
-
-ALTER TABLE [dbo].[t_adm_empresa] ADD  CONSTRAINT [DF_t_adm_empresa_TELEFONOEMPRESA]  DEFAULT (N'Sin Información') FOR [TELEFONOEMPRESA]
-GO
-
-ALTER TABLE [dbo].[t_adm_empresa] ADD  CONSTRAINT [DF_t_adm_empresa_EMAILEMPRESA]  DEFAULT (N'Sin Información') FOR [EMAILEMPRESA]
-GO
-
-ALTER TABLE [dbo].[t_adm_empresa] ADD  CONSTRAINT [DF_t_adm_empresa_CONTACTOEMPRESA]  DEFAULT (N'Sin Información') FOR [CONTACTOEMPRESA]
-GO
-
-ALTER TABLE [dbo].[t_adm_empresa] ADD  CONSTRAINT [DF_t_adm_empresa_ESTADOEMPRESA]  DEFAULT ((1)) FOR [ESTADOEMPRESA]
 GO
 
 /****** Object:  Table [dbo].[t_adm_reclutador]    Script Date: 16/4/2018 13:49:26 ******/
@@ -433,20 +418,5 @@ GO
 
 ALTER TABLE [dbo].[t_seg_usuario] CHECK CONSTRAINT [FK_T_SEG_USUARIO_T_SEG_ROL]
 GO
-
-USE [Recruit_DB]
-GO
-SET IDENTITY_INSERT [dbo].[t_adm_empresa] ON 
-
-INSERT [dbo].[t_adm_empresa] ([PKEMPRESA], [NOMBREEMPRESA], [DIRECCIONEMPRESA], [TELEFONOEMPRESA], [EMAILEMPRESA], [CONTACTOEMPRESA], [ESTADOEMPRESA]) VALUES (1, N'pedro company', N'san jose', N'232323232 ', N'pleiva@aya.go.cr', N'pedro', 1)
-INSERT [dbo].[t_adm_empresa] ([PKEMPRESA], [NOMBREEMPRESA], [DIRECCIONEMPRESA], [TELEFONOEMPRESA], [EMAILEMPRESA], [CONTACTOEMPRESA], [ESTADOEMPRESA]) VALUES (2, N'Juan Company2', N'Sin Información', N'88888888', N'pleiva@aya.go.cr', N'Pedro Leiva', 1)
-INSERT [dbo].[t_adm_empresa] ([PKEMPRESA], [NOMBREEMPRESA], [DIRECCIONEMPRESA], [TELEFONOEMPRESA], [EMAILEMPRESA], [CONTACTOEMPRESA], [ESTADOEMPRESA]) VALUES (5, N'Ruben Company', N'san jose', N'asdf', N'pleiva@aya.go.cr', N'asdf', 1)
-INSERT [dbo].[t_adm_empresa] ([PKEMPRESA], [NOMBREEMPRESA], [DIRECCIONEMPRESA], [TELEFONOEMPRESA], [EMAILEMPRESA], [CONTACTOEMPRESA], [ESTADOEMPRESA]) VALUES (6, N'Lina Company', N'san jose', N'eew', N'wert', N'wert', 1)
-INSERT [dbo].[t_adm_empresa] ([PKEMPRESA], [NOMBREEMPRESA], [DIRECCIONEMPRESA], [TELEFONOEMPRESA], [EMAILEMPRESA], [CONTACTOEMPRESA], [ESTADOEMPRESA]) VALUES (7, N'Luis f Company', N'Sin Información', N'Sin Información', N'Sin Información', N'Sin Información', 1)
-INSERT [dbo].[t_adm_empresa] ([PKEMPRESA], [NOMBREEMPRESA], [DIRECCIONEMPRESA], [TELEFONOEMPRESA], [EMAILEMPRESA], [CONTACTOEMPRESA], [ESTADOEMPRESA]) VALUES (8, N'Carlos Company', N'Sin Información', N'Sin Información', N'Sin Información', N'Sin Información', 1)
-INSERT [dbo].[t_adm_empresa] ([PKEMPRESA], [NOMBREEMPRESA], [DIRECCIONEMPRESA], [TELEFONOEMPRESA], [EMAILEMPRESA], [CONTACTOEMPRESA], [ESTADOEMPRESA]) VALUES (9, N'Esteban Company', N'san jose', N'Sin Información', N'Sin Información', N'Sin Información', 1)
-INSERT [dbo].[t_adm_empresa] ([PKEMPRESA], [NOMBREEMPRESA], [DIRECCIONEMPRESA], [TELEFONOEMPRESA], [EMAILEMPRESA], [CONTACTOEMPRESA], [ESTADOEMPRESA]) VALUES (10, N'Erick Comapany', N'san jose', N'Sin Información', N'Sin Información', N'Sin Información', 1)
-INSERT [dbo].[t_adm_empresa] ([PKEMPRESA], [NOMBREEMPRESA], [DIRECCIONEMPRESA], [TELEFONOEMPRESA], [EMAILEMPRESA], [CONTACTOEMPRESA], [ESTADOEMPRESA]) VALUES (11, N'Luis', N'san jose', N'232323232 ', N'afaffd@adsfafd.com', N'pedro', 1)
-SET IDENTITY_INSERT [dbo].[t_adm_empresa] OFF
 
 
