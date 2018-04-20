@@ -51,28 +51,22 @@ namespace Recruit.WebAPI.Controllers
         [HttpPut("{id}")]
         public void Put(int id, [FromBody]TRecProbabilidad value)
         {
-            var probabilidad = _context.TRecProbabilidad.FirstOrDefault(m => m.Pkprobabilidad == id);
+            var probabilidad = _context.TRecProbabilidad.Where(TRecProbabilidad => TRecProbabilidad.Pkprobabilidad == id).First();
 
-            if (probabilidad != null)
-            {
-                probabilidad = value;
-                probabilidad.Pkprobabilidad = id;
-                _context.Update(probabilidad);
-                _context.SaveChanges();
-            }
+            probabilidad.Descripcionprobabilidad = value.Descripcionprobabilidad;
+
+            _context.SaveChanges();
         }
 
         // DELETE: api/ApiWithActions/5
         [HttpDelete("{id}")]
         public void Delete(int id)
         {
-            var probabilidad = _context.TRecProbabilidad.FirstOrDefault(m => m.Pkprobabilidad == id);
+            var probabilidad = _context.TRecProbabilidad.Where(TRecProbabilidad => TRecProbabilidad.Pkprobabilidad == id).First();
 
-            if (probabilidad != null)
-            {
-                _context.Remove(probabilidad);
-                _context.SaveChanges();
-            }
+            _context.TRecProbabilidad.Remove(probabilidad);
+            _context.SaveChanges();
+         
         }
     }
 }
