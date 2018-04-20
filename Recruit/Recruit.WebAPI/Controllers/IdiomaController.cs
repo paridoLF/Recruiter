@@ -51,26 +51,21 @@ namespace Recruit.WebAPI.Controllers
         [HttpPut("{id}")]
         public void Put(int id, [FromBody]TRecIdioma value)
         {
-            var idioma = _context.TRecIdioma.FirstOrDefault(e => e.Pkidioma == id);
-            if (idioma != null)
-            {
-                idioma = value;
-                idioma.Pkidioma = id;
-                _context.Update(idioma);
-                _context.SaveChanges();
-            }
+            var idioma = _context.TRecIdioma.Where(TRecIdioma => TRecIdioma.Pkidioma == id).First();
+
+            idioma.Descripcionidioma = value.Descripcionidioma;
+
+            _context.SaveChanges();
         }
 
         // DELETE: api/Idioma/5
         [HttpDelete("{id}")]
         public void Delete(int id, [FromBody]TRecIdioma value)
         {
-            var idioma = _context.TRecIdioma.FirstOrDefault(e => e.Pkidioma == id);
-            if (idioma != null)
-            {
-                _context.Remove(idioma);
-                _context.SaveChanges();
-            }
+            var idioma = _context.TRecIdioma.Where(TRecIdioma => TRecIdioma.Pkidioma == id).First();
+
+            _context.TRecIdioma.Remove(idioma);
+            _context.SaveChanges();
         }
     }
 }
