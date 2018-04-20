@@ -1,7 +1,7 @@
 USE [Recruit_DB]
 GO
 
-/****** Object:  Table [dbo].[t_adm_configuracion]    Script Date: 16/4/2018 13:49:26 ******/
+/********* Object:  Table [dbo].[t_adm_configuracion]    Script Date: 16/4/2018 13:49:26 ******/
 SET ANSI_NULLS ON
 GO
 
@@ -9,6 +9,7 @@ SET QUOTED_IDENTIFIER ON
 GO
 
 CREATE TABLE [dbo].[t_adm_configuracion](
+        [PKCONFIGURACION][int](50) NOT NULL,
 	[CORREOCONFIGURACION] [nchar](50) NOT NULL,
 	[PATHCONFIGURACION] [nvarchar](100) NOT NULL
 ) ON [PRIMARY]
@@ -418,5 +419,14 @@ GO
 
 ALTER TABLE [dbo].[t_seg_usuario] CHECK CONSTRAINT [FK_T_SEG_USUARIO_T_SEG_ROL]
 GO
+
+SET IDENTITY_INSERT [dbo].[t_adm_configuracion] ON 
+
+INSERT [dbo].[t_adm_configuracion] ([PKCONFIGURACION], [CORREOCONFIGURACION], [PATHCONFIGURACION]) VALUES (1, N'aya@aya.go.cr                                     ', N'asd')
+INSERT [dbo].[t_adm_configuracion] ([PKCONFIGURACION], [CORREOCONFIGURACION], [PATHCONFIGURACION]) VALUES (2, N'prueba@aya.go.cr                                  ', N'Prueba1')
+INSERT [dbo].[t_adm_configuracion] ([PKCONFIGURACION], [CORREOCONFIGURACION], [PATHCONFIGURACION]) VALUES (3, N'jvargas@aya.go.cr                                 ', N'Prueba_Modifica')
+INSERT [dbo].[t_adm_configuracion] ([PKCONFIGURACION], [CORREOCONFIGURACION], [PATHCONFIGURACION]) VALUES (4, N'jvargas@aya.go.cr                                 ', N'Prueba_Modifica')
+INSERT [dbo].[t_adm_configuracion] ([PKCONFIGURACION], [CORREOCONFIGURACION], [PATHCONFIGURACION]) VALUES (5, N'ruvargas@aya.go.cr                                ', N'Prueba_Modifica_123')
+INSERT [dbo].[t_adm_configuracion] ([PKCONFIGURACION], [CORREOCONFIGURACION], [PATHCONFIGURACION]) VALUES (7, N'ruvargas@aya.go.cr                                ', N'Prueba_Modifica_2222')
 
 
