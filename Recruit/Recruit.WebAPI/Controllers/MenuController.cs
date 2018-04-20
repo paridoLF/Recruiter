@@ -58,12 +58,11 @@ namespace Recruit.WebAPI.Controllers
         }
 
         // PUT: api/Menu/5
-        //[HttpPut("{id}")]
-        [HttpPut]
+        [HttpPut("{id}")]
         public void Put(int id, [FromBody]TSegMenu value)
         {
 
-            var menu = _context.TSegMenu.FirstOrDefault(u => u.Pkmenu == value.Pkmenu);
+            var menu = _context.TSegMenu.FirstOrDefault(u => u.Pkmenu == id);
 
             if (menu != null)
             {
@@ -71,7 +70,9 @@ namespace Recruit.WebAPI.Controllers
                 menu.Urlmenu = value.Urlmenu;
                 menu.Staturegister = value.Staturegister;
                 menu.Fkrol = value.Fkrol;
-                
+
+             
+
                 _context.TSegMenu.Update(menu);
                 _context.SaveChanges();
             }
@@ -86,14 +87,10 @@ namespace Recruit.WebAPI.Controllers
 
         }
 
-        // DELETE: api/ApiWithActions/5 [HttpDelete("{id}")]
-        [HttpDelete]
-        public void Delete([FromBody]TSegMenu value)
+        // DELETE: api/ApiWithActions/5
+        [HttpDelete("{id}")]
+        public void Delete(int id)
         {
-            var menu = _context.TSegMenu.Where(e => e.Pkmenu == value.Pkmenu).First();
-
-            _context.TSegMenu.Remove(menu);
-            _context.SaveChanges();
         }
     }
 }

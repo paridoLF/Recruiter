@@ -56,14 +56,14 @@ namespace Recruit.WebAPI.Controllers
         }
 
         // PUT: api/Reclutador/5
-        [HttpPut]
+        [HttpPut("{id}")]
         public void Put(int id, [FromBody]TAdmReclutador value)
         {
             // Instanciamos el DbContext
             //var dbContext = new testdbEntities();
 
             // Realizamos la consulta
-            var cliente = _context.TAdmReclutador.Where(p => p.Pkreclutador == value.Pkreclutador).First();
+            var cliente = _context.TAdmReclutador.Where(p => p.Pkreclutador == id).First();
 
 
 

@@ -58,11 +58,11 @@ namespace Recruit.WebAPI.Controllers
         }
         
         // PUT: api/OfertaTrabajo/5
-        [HttpPut]
+        [HttpPut("{id}")]
        
         public void Put(int id, [FromBody]TRecOfertatrabajo value)
         {
-            var OfertaTrabajo = _context.TRecOfertatrabajo.Where(p => p.Pkofertatrabajo == value.Pkofertatrabajo).First();
+            var OfertaTrabajo = _context.TRecOfertatrabajo.Where(p => p.Pkofertatrabajo == id).First();
 
             OfertaTrabajo.Descripcion = value.Descripcion;
             OfertaTrabajo.Empresa = value.Empresa;
@@ -80,10 +80,10 @@ namespace Recruit.WebAPI.Controllers
         
         // DELETE: api/ApiWithActions/5
         [HttpDelete("{id}")]
-       
-        public void Delete(int id)
+        [Route("api/OfertaTrabajo/EliminarOferta")]
+        public void Delete(int idOferta)
         {
-            var OfertaTrabajo = _context.TRecOfertatrabajo.Where(p => p.Pkofertatrabajo == id).First();
+            var OfertaTrabajo = _context.TRecOfertatrabajo.Where(p => p.Pkofertatrabajo == idOferta).First();
 
             _context.TRecOfertatrabajo.Remove(OfertaTrabajo);
 
