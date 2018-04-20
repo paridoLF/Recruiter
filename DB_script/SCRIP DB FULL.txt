@@ -1,7 +1,7 @@
 USE [Recruit_DB]
 GO
 
-/****** Object:  Table [dbo].[t_adm_configuracion]    Script Date: 16/4/2018 13:49:26 ******/
+/********* Object:  Table [dbo].[t_adm_configuracion]    Script Date: 16/4/2018 13:49:26 ******/
 SET ANSI_NULLS ON
 GO
 
