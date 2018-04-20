@@ -16,6 +16,11 @@ namespace Recruit.WebAPI.Controllers
     {
         private readonly Recruit_DBContext _context;
 
+        public UsuariosController(Recruit_DBContext context)
+        {
+            _context = context;
+
+        }
 
         // GET: api/Usuarios
         [HttpGet]
@@ -50,18 +55,14 @@ namespace Recruit.WebAPI.Controllers
         {
             _context.TSegUsuario.Add(value);
             _context.SaveChanges();
-
-            
-
-            
         }
         
         // PUT: api/Usuarios/ UPDATE
-        [HttpPut("{id}")]
+        [HttpPut]
         public void Put(int id, [FromBody]TSegUsuario value)
         {
           
-                var usuarios = _context.TSegUsuario.FirstOrDefault(u => u.Pkusuario == id);
+                var usuarios = _context.TSegUsuario.FirstOrDefault(u => u.Pkusuario == value.Pkusuario);
 
                 if (usuarios != null)
                 {
