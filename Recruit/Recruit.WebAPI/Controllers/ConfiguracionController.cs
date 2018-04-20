@@ -32,7 +32,7 @@ namespace Recruit.WebAPI.Controllers
         [HttpGet("{id}", Name = "ConfiguracionGet")]
         public TAdmConfiguracion Get(int id)
         {
-            var TAdmConfiguracion = _context.TAdmConfiguracion.FirstOrDefault(c => c.Pkconfiguracion == id);
+            var TAdmConfiguracion = _context.TAdmConfiguracion.FirstOrDefault(c => c.PKCONFIGURACION == id);
             if (TAdmConfiguracion == null)
             {
                 return null;
@@ -50,13 +50,13 @@ namespace Recruit.WebAPI.Controllers
         }
         
         // PUT: api/Configuracion/5
-        [HttpPut]
+        [HttpPut("{id}")]
       
         public void Put(int id, [FromBody] TAdmConfiguracion value)
         {
-            var configuarcion = _context.TAdmConfiguracion.FirstOrDefault(c => c.Pkconfiguracion == value.Pkconfiguracion);
-            configuarcion.Correoconfiguracion = value.Correoconfiguracion;
-            configuarcion.Pathconfiguracion = value.Pathconfiguracion;
+            var configuarcion = _context.TAdmConfiguracion.FirstOrDefault(c => c.PKCONFIGURACION == id);
+            configuarcion.CORREOCONFIGURACION = value.CORREOCONFIGURACION;
+            configuarcion.PATHCONFIGURACION = value.PATHCONFIGURACION;
             _context.TAdmConfiguracion.Update(configuarcion);
             _context.SaveChanges();
 
@@ -66,7 +66,7 @@ namespace Recruit.WebAPI.Controllers
         [HttpDelete("{id}")]
         public void Delete(int id)
         {
-            var configuracion = _context.TAdmConfiguracion.Where(c => c.Pkconfiguracion == id).First();
+            var configuracion = _context.TAdmConfiguracion.Where(c => c.PKCONFIGURACION == id).First();
 
             _context.TAdmConfiguracion.Remove(configuracion);
             _context.SaveChanges();

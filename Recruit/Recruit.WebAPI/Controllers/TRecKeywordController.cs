@@ -14,12 +14,6 @@ namespace Recruit.WebAPI.Controllers
     {
         private readonly Recruit_DBContext _context;
 
-        public TRecKeywordController(Recruit_DBContext context)
-        {
-            _context = context;
-
-        }
-
         // GET: api/TRecKeyword
         [HttpGet]
         public IEnumerable<TRecKeyword> Get()

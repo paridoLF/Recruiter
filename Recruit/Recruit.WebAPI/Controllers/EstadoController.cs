@@ -51,22 +51,26 @@ namespace Recruit.WebAPI.Controllers
         [HttpPut("{id}")]
         public void Put(int id, [FromBody]TRecEstado value)
         {
-            var estado = _context.TRecEstado.Where(TRecEstado => TRecEstado.Pkestado == id).First();
-           
-            estado.Descripcionestado = value.Descripcionestado;
-
-            _context.SaveChanges();
+            var estado = _context.TRecEstado.FirstOrDefault(e => e.Pkestado == id);
+            if (estado != null)
+            {
+                estado = value;
+                estado.Pkestado = id;
+                _context.Update(estado);
+                _context.SaveChanges();
+            }
         }
 
         // DELETE: api/Estado/5
         [HttpDelete("{id}")]
         public void Delete(int id, [FromBody]TRecEstado value)
         {
-            var estado = _context.TRecEstado.Where(TRecEstado => TRecEstado.Pkestado == id).First();
-
-            _context.TRecEstado.Remove(estado);
-            _context.SaveChanges();
-
+            var estado = _context.TRecEstado.FirstOrDefault(e => e.Pkestado == id);
+            if (estado != null)
+            {
+                _context.Remove(estado);
+                _context.SaveChanges();
+            }
         }
     }
 }
