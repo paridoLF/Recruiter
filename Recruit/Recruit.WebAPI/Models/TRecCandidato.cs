@@ -10,7 +10,7 @@ namespace Recruit.WebAPI.Models
         public int Estado { get; set; }
         public string Telefono { get; set; }
         public string Correo { get; set; }
-        public bool Blacklist { get; set; }
+        public int Blacklist { get; set; }
         public string Direccion { get; set; }
         public int Añosexperiencia { get; set; }
         public int Estadocivil { get; set; }
