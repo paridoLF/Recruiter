@@ -97,6 +97,10 @@ CREATE TABLE [dbo].[t_rec_candidato](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
+SET IDENTITY_INSERT [dbo].[t_rec_candidato] ON 
+
+INSERT [dbo].[t_rec_candidato] ([PKCANDIDATO], [NOMBRE], [ESTADO], [TELEFONO], [CORREO], [BLACKLIST], [DIRECCION], [AÑOSEXPERIENCIA], [ESTADOCIVIL]) VALUES (2, N'Cristian', 1, N'12345678', N'@HH', 1, N'DIRECCION', 5, 1)
+SET IDENTITY_INSERT [dbo].[t_rec_candidato] OFF
 
 /****** Object:  Table [dbo].[t_rec_candmail]    Script Date: 16/4/2018 13:49:26 ******/
 SET ANSI_NULLS ON
