@@ -429,4 +429,21 @@ INSERT [dbo].[t_adm_configuracion] ([PKCONFIGURACION], [CORREOCONFIGURACION], [P
 INSERT [dbo].[t_adm_configuracion] ([PKCONFIGURACION], [CORREOCONFIGURACION], [PATHCONFIGURACION]) VALUES (5, N'ruvargas@aya.go.cr                                ', N'Prueba_Modifica_123')
 INSERT [dbo].[t_adm_configuracion] ([PKCONFIGURACION], [CORREOCONFIGURACION], [PATHCONFIGURACION]) VALUES (7, N'ruvargas@aya.go.cr                                ', N'Prueba_Modifica_2222')
 
+INSERT [dbo].[t_seg_bitacora] ([PKBITACORA], [ACCIONBITACORA], [TABLABITACORA], [FECHABITACORA], [REGISTROBITACORA], [PAGINABITACORA]) VALUES (1, N'Nuevo', N't_seg_bitacora', CAST(N'2018-04-18T00:00:00.000' AS DateTime), N'Prueba', N'Prueba')
+INSERT [dbo].[t_seg_bitacora] ([PKBITACORA], [ACCIONBITACORA], [TABLABITACORA], [FECHABITACORA], [REGISTROBITACORA], [PAGINABITACORA]) VALUES (2, N'Nuevo', N't_seg_bitacora', CAST(N'2018-04-30T00:00:00.000' AS DateTime), N'Prueba', N'Prueba')
+INSERT [dbo].[t_seg_rol] ([PKROL], [NOMBREROL]) VALUES (1, N'Administrador')
+INSERT [dbo].[t_seg_rol] ([PKROL], [NOMBREROL]) VALUES (2, N'Elaboradora')
 
+
+INSERT [dbo].[t_adm_reclutador] ([PKRECLUTADOR], [NOMBRERECLUTADOR], [TELEFONORECLUTADOR], [CORREORECLUTADOR], [ESTADORECLUTADOR]) VALUES (0, N'Fmiranda2', N'3333-55523', N'fmiranda@aya.go.cr', 1)
+INSERT [dbo].[t_adm_reclutador] ([PKRECLUTADOR], [NOMBRERECLUTADOR], [TELEFONORECLUTADOR], [CORREORECLUTADOR], [ESTADORECLUTADOR]) VALUES (1, N'Francisco', N'22222222', N'fran@gan.com', 1)
+INSERT [dbo].[t_adm_reclutador] ([PKRECLUTADOR], [NOMBRERECLUTADOR], [TELEFONORECLUTADOR], [CORREORECLUTADOR], [ESTADORECLUTADOR]) VALUES (2, N'Fmiranda102', N'3333-55523', N'fmiranda@aya.go.cr', 1)
+INSERT [dbo].[t_adm_reclutador] ([PKRECLUTADOR], [NOMBRERECLUTADOR], [TELEFONORECLUTADOR], [CORREORECLUTADOR], [ESTADORECLUTADOR]) VALUES (19, N'F1222222', N'3333-55523', N'fmiranda@aya.go.cr8888', 1)
+INSERT [dbo].[t_adm_reclutador] ([PKRECLUTADOR], [NOMBRERECLUTADOR], [TELEFONORECLUTADOR], [CORREORECLUTADOR], [ESTADORECLUTADOR]) VALUES (21, N'F', N'3333-55523', N'fmiranda@aya.go.cr', 1)
+
+
+SET IDENTITY_INSERT [dbo].[t_rec_ofertatrabajo] ON 
+INSERT [dbo].[t_rec_ofertatrabajo] ([PKOFERTATRABAJO], [DESCRIPCION], [LABORES], [IDIOMA], [NIVEL_IDIOMA], [CONOCIMIENTOS_REQ], [CONOCIMIENTOS_DES], [BENEFICIOS_LAB], [SALARIO], [EMPRESA]) VALUES (1, N'pRUEBA', N'ALGUNAS', N'1', 1, N'DDD', N'DDDD', N'DDD', CAST(100.00 AS Numeric(13, 2)), 1)
+INSERT [dbo].[t_rec_ofertatrabajo] ([PKOFERTATRABAJO], [DESCRIPCION], [LABORES], [IDIOMA], [NIVEL_IDIOMA], [CONOCIMIENTOS_REQ], [CONOCIMIENTOS_DES], [BENEFICIOS_LAB], [SALARIO], [EMPRESA]) VALUES (4, N'Prueba', N'Programar en .net', N'1', 1, N'.Net', N'Varios en Base Datos', N'Algunos', CAST(1000.00 AS Numeric(13, 2)), 1)
+INSERT [dbo].[t_rec_ofertatrabajo] ([PKOFERTATRABAJO], [DESCRIPCION], [LABORES], [IDIOMA], [NIVEL_IDIOMA], [CONOCIMIENTOS_REQ], [CONOCIMIENTOS_DES], [BENEFICIOS_LAB], [SALARIO], [EMPRESA]) VALUES (5, N'Prueba', N'Programar en .net', N'1', 1, N'.Net', N'Varios en Base Datos', N'Algunos', CAST(1000.00 AS Numeric(13, 2)), 1)
+INSERT [dbo].[t_rec_ofertatrabajo] ([PKOFERTATRABAJO], [DESCRIPCION], [LABORES], [IDIOMA], [NIVEL_IDIOMA], [CONOCIMIENTOS_REQ], [CONOCIMIENTOS_DES], [BENEFICIOS_LAB], [SALARIO], [EMPRESA]) VALUES (6, N'Prueba', N'Programar en .net', N'1', 1, N'.Net', N'Varios en Base Datos', N'Algunos', CAST(1000.00 AS Numeric(13, 2)), 1)
