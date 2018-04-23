@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-// controladores empresa
+// controladores empresa.
 namespace Recruit.MVC.Controllers
 {
     public class EmpresaController : Controller
