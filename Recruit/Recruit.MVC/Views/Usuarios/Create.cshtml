@@ -1,36 +1,69 @@
-﻿@model UsuariosModel;
+﻿@model Recruit.MVC.Models.UsuarioModel
+
 @{
     ViewData["Title"] = "Create";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <h2>Create</h2>
-<br />
 
-@using (Html.BeginForm())
-{
-    @Html.ValidationSummary(true, "Fallo del login, check los detalles")
-<div class="col-lg-10">Nombreusuario</div>
-<div class="col-lg-10"><input name="Nombreusuario" placeholder="Digite" /></div>
+<h4>UsuarioModel</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Pkusuario" class="control-label"></label>
+                <input asp-for="Pkusuario" class="form-control" />
+                <span asp-validation-for="Pkusuario" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Nombreusuario" class="control-label"></label>
+                <input asp-for="Nombreusuario" class="form-control" />
+                <span asp-validation-for="Nombreusuario" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Loginusuario" class="control-label"></label>
+                <input asp-for="Loginusuario" class="form-control" />
+                <span asp-validation-for="Loginusuario" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Passwordusuario" class="control-label"></label>
+                <input asp-for="Passwordusuario" class="form-control" />
+                <span asp-validation-for="Passwordusuario" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Cedulausuario" class="control-label"></label>
+                <input asp-for="Cedulausuario" class="form-control" />
+                <span asp-validation-for="Cedulausuario" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Activousuario" class="control-label"></label>
+                <input asp-for="Activousuario" class="form-control" />
+                <span asp-validation-for="Activousuario" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Statusregister" class="control-label"></label>
+                <input asp-for="Statusregister" class="form-control" />
+                <span asp-validation-for="Statusregister" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Fkrol" class="control-label"></label>
+                <input asp-for="Fkrol" class="form-control" />
+                <span asp-validation-for="Fkrol" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </form>
+    </div>
+</div>
 
-<div class="col-lg-10">Cedulausuario</div>
-<div class="col-lg-10"><input name="Cedulausuario" placeholder="Digite" /></div>
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
 
-<div class="col-lg-10">Cedula</div>
-<div class="col-lg-10"><input name="Cedula" placeholder="Digite" /></div>
-
-<div class="col-lg-10">Loginusuario</div>
-<div class="col-lg-10"><input name="Loginusuario" placeholder="Digite" /></div>
-
-
-<div class="col-lg-10">Passwordusuario</div>
-<div class="col-lg-10"><input name="Passwordusuario" placeholder="Digite" /></div>
-
-
-
-<div class="col-lg-10">Rol</div>
-<div class="col-lg-10"><select name="Fkrol" placeholder="Digite" /></div>
-
-
-
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 }
