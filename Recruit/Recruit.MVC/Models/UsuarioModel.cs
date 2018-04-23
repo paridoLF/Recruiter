@@ -5,8 +5,9 @@ using System.Threading.Tasks;
 
 namespace Recruit.MVC.Models
 {
-    public class Usuarios
+    public class UsuarioModel
     {
+
         public int Pkusuario { get; set; }
         public string Nombreusuario { get; set; }
         public string Loginusuario { get; set; }
@@ -16,6 +17,5 @@ namespace Recruit.MVC.Models
         public bool? Statusregister { get; set; }
         public int Fkrol { get; set; }
 
-        //public TSegRol FkrolNavigation { get; set; }
     }
 }

@@ -1,28 +1,51 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http;
+using System.Net.Http.Headers;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
+using Recruit.MVC.Models;
 
 namespace Recruit.MVC.Controllers
 {
     public class UsuariosController : Controller
     {
+        string UrlApi= "http://localhost:53907/";
         // GET: Usuarios
-        public ActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            return View();
-        }
+            List<UsuarioModel> UsuariosList = new List<UsuarioModel>();
+            using (var cliente = new HttpClient())
 
+            {
+
+                cliente.BaseAddress = new Uri(UrlApi);
+                cliente.DefaultRequestHeaders.Accept.Clear();
+                cliente.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+                HttpResponseMessage response = await cliente.GetAsync("api/Usuarios/");
+
+                if (response.IsSuccessStatusCode)
+                {
+                    var usuariosResult = response.Content.ReadAsStringAsync().Result;
+                    UsuariosList = JsonConvert.DeserializeObject  <List<UsuarioModel>>(usuariosResult);
+                }
+
+
+            }
+                return View(UsuariosList);
+        }
+        
         // GET: Usuarios/Details/5
-        public ActionResult Details(int id)
+        public IActionResult Details(int id)
         {
             return View();
         }
 
         // GET: Usuarios/Create
-        public ActionResult Create()
+        public IActionResult Create()
         {
             return View();
         }
@@ -30,7 +53,7 @@ namespace Recruit.MVC.Controllers
         // POST: Usuarios/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
+        public IActionResult Create(IFormCollection collection)
         {
             try
             {
@@ -45,7 +68,7 @@ namespace Recruit.MVC.Controllers
         }
 
         // GET: Usuarios/Edit/5
-        public ActionResult Edit(int id)
+        public IActionResult Edit(int id)
         {
             return View();
         }
@@ -53,7 +76,7 @@ namespace Recruit.MVC.Controllers
         // POST: Usuarios/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
+        public IActionResult Edit(int id, IFormCollection collection)
         {
             try
             {
@@ -68,7 +91,7 @@ namespace Recruit.MVC.Controllers
         }
 
         // GET: Usuarios/Delete/5
-        public ActionResult Delete(int id)
+        public IActionResult Delete(int id)
         {
             return View();
         }
@@ -76,7 +99,7 @@ namespace Recruit.MVC.Controllers
         // POST: Usuarios/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
+        public IActionResult Delete(int id, IFormCollection collection)
         {
             try
             {

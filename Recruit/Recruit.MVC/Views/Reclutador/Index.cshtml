@@ -1,7 +1,59 @@
-﻿
+﻿@model IEnumerable<Recruit.MVC.Models.ReclutadorModel>
+
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "View";
 }
 
-<h2>Index: Reclutador</h2>
+<h2>View</h2>
 
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Pkreclutador)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Nombrereclutador)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Telefonoreclutador)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Correoreclutador)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Estadoreclutador)
+                </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Pkreclutador)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nombrereclutador)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Telefonoreclutador)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Correoreclutador)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Estadoreclutador)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
