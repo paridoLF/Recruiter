@@ -6,32 +6,39 @@ using Microsoft.AspNetCore.Mvc;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using Newtonsoft.Json;
+using Recruit.MVC.Models;
 
 namespace Recruit.MVC.Controllers
 {
     public class TRecCandidatoController : Controller
     {
         string apUrl = "http://localhost:53917/";
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            //List<TRecCandidatoController>
-            //using (var candidato = new HttpClient())
-            //{
-            //    candidato.BaseAddress = new Uri("http://localhost:53917/");
-            //    candidato.DefaultRequestHeaders.Accept.Clear();
-            //    candidato.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/Json"));
+            List<TRecCandidatoModel> candidatoList = new List<TRecCandidatoModel>();
 
-            //    HttpResponseMessage response = await candidato.GetAsync("api/TRecCandidato");
+            using (var candidato = new HttpClient())
+            {
+                candidato.BaseAddress = new Uri(apUrl);
+                candidato.DefaultRequestHeaders.Clear();
+                candidato.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
-            //    if (response.IsSuccessStatusCode)
-            //    {
-            //        var 
-            //    }
 
-            //}
-               
+                HttpResponseMessage res = await candidato.GetAsync("api/TRecCandidato");
+                //await es asincronica por eso se cambia el formato de la funcion de public IActionResult Index() 
+                //a public async Task<IActionResult> Index()
 
-                return View();
+                if (res.IsSuccessStatusCode)
+                {
+                    var candidatoResult = res.Content.ReadAsStringAsync().Result;
+
+                    candidatoList = JsonConvert.DeserializeObject<List<TRecCandidatoModel>>(candidatoResult);
+
+                }
+
+            }
+
+                return View(candidatoList);
         }
 
         public IActionResult Create()
