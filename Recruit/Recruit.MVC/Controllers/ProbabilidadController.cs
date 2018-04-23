@@ -3,13 +3,36 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using System.Net.Http;
+using Recruit.MVC.Models;
+using System.Net.Http.Headers;
+using Newtonsoft.Json;
 
 namespace Recruit.MVC.Controllers
 {
     public class ProbabilidadController : Controller
     {
-        public IActionResult Index()
+        string apiUrl = "http://localhost:53907/";
+
+        public async Task<IActionResult> Index()
         {
+            List<Probabilidad> entrevistaList = new List<Probabilidad>();
+
+            using (var probabilidad = new HttpClient())
+            {
+                probabilidad.BaseAddress = new Uri(apiUrl);
+                probabilidad.DefaultRequestHeaders.Clear();
+                probabilidad.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+
+                HttpResponseMessage res = await probabilidad.GetAsync("api/Probabilidad");
+
+                if (res.IsSuccessStatusCode)
+                {
+                    var entrevistaResult = res.Content.ReadAsStringAsync().Result;
+                    entrevistaList = JsonConvert.DeserializeObject<List<Probabilidad>>(entrevistaResult);
+                }
+            }
+
             return View();
         }
 
