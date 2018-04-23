@@ -55,16 +55,16 @@ namespace Recruit.WebAPI.Controllers
         }
 
         // PUT: api/Empresa/5
-        [HttpPut]
+        [HttpPut("{id}")]
         public void Put(int id, [FromBody] TAdmEmpresa value)
         {
-            var   empresa = _context.TAdmEmpresa.FirstOrDefault(e => e.Pkempresa == value.Pkempresa);
+            var empresa = _context.TAdmEmpresa.FirstOrDefault(e => e.Pkempresa == id);
             empresa.Nombreempresa = value.Nombreempresa;
             empresa.Direccionempresa = value.Direccionempresa;
             empresa.Telefonoempresa = value.Telefonoempresa;
             empresa.Emailempresa = value.Emailempresa;
             empresa.Contactoempresa = value.Contactoempresa;
-           // empresa.Estadoempresa = value.Estadoempresa;
+            empresa.Estadoempresa = value.Estadoempresa;
             _context.TAdmEmpresa.Update(empresa);
             _context.SaveChanges();
         }
