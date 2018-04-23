@@ -15,10 +15,24 @@ namespace Recruit.MVC.Controllers
 
         string apiUrl = "http://localhost:5555/";
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-           
-            return View();
+            List<ReclutadorModel> reclutadorList = new List<ReclutadorModel>();
+
+            using (var client = new HttpClient()) {
+                client.BaseAddress = new Uri(apiUrl);
+                client.DefaultRequestHeaders.Clear();
+                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+
+                HttpResponseMessage res = await client.GetAsync("api/Reclutador");
+
+                if (res.IsSuccessStatusCode) {
+                    var reclutadorResult = res.Content.ReadAsStringAsync().Result;
+                    reclutadorList = JsonConvert.DeserializeObject<List<ReclutadorModel>>(reclutadorResult);
+
+                }
+            }
+            return View(reclutadorList);
         }
 
         public IActionResult Create()
