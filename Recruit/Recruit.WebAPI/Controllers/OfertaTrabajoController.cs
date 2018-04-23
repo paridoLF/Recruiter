@@ -23,17 +23,17 @@ namespace Recruit.WebAPI.Controllers
 
         // GET: api/OfertaTrabajo
         [HttpGet]
-
+        
         public IEnumerable<TRecOfertatrabajo> Get()
         {
             return _context.TRecOfertatrabajo.ToList();
             //return new string[] { "value1", "value2" };
         }
 
-
+        
         // GET: api/OfertaTrabajo/5
         [HttpGet("{OfertaTrabajoid}", Name = "OfertaTrabajoGet")]
-
+       
         public TRecOfertatrabajo OfertaTrabajoGet(int OfertaTrabajoId)
         {
             var queryOfertaTrabajo = _context.TRecOfertatrabajo.Where(p => p.Pkofertatrabajo == OfertaTrabajoId);
@@ -46,24 +46,23 @@ namespace Recruit.WebAPI.Controllers
 
             //return "value";
         }
-
+        
         // POST: api/OfertaTrabajo
         [HttpPost]
-
+        
         public void Post([FromBody]TRecOfertatrabajo value)
         {
             _context.TRecOfertatrabajo.Add(value);
             _context.SaveChanges();
 
         }
-
+        
         // PUT: api/OfertaTrabajo/5
-        [HttpPut] 
-
+        [HttpPut("{id}")]
        
         public void Put(int id, [FromBody]TRecOfertatrabajo value)
         {
-            var OfertaTrabajo = _context.TRecOfertatrabajo.Where(p => p.Pkofertatrabajo == value.Pkofertatrabajo).First();
+            var OfertaTrabajo = _context.TRecOfertatrabajo.Where(p => p.Pkofertatrabajo == id).First();
 
             OfertaTrabajo.Descripcion = value.Descripcion;
             OfertaTrabajo.Empresa = value.Empresa;
@@ -81,10 +80,10 @@ namespace Recruit.WebAPI.Controllers
         
         // DELETE: api/ApiWithActions/5
         [HttpDelete("{id}")]
-       
-        public void Delete(int id)
+        [Route("api/OfertaTrabajo/EliminarOferta")]
+        public void Delete(int idOferta)
         {
-            var OfertaTrabajo = _context.TRecOfertatrabajo.Where(p => p.Pkofertatrabajo == id).First();
+            var OfertaTrabajo = _context.TRecOfertatrabajo.Where(p => p.Pkofertatrabajo == idOferta).First();
 
             _context.TRecOfertatrabajo.Remove(OfertaTrabajo);
 

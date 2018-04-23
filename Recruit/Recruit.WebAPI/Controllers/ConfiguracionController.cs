@@ -28,7 +28,7 @@ namespace Recruit.WebAPI.Controllers
             return _context.TAdmConfiguracion.ToList();
         }
 
-        //// GET: api/Configuracion/5
+        //// GET: api/Configuracion/5/
         [HttpGet("{id}", Name = "ConfiguracionGet")]
         public TAdmConfiguracion Get(int id)
         {
@@ -50,11 +50,11 @@ namespace Recruit.WebAPI.Controllers
         }
         
         // PUT: api/Configuracion/5
-        [HttpPut("{id}")]
+        [HttpPut]
       
         public void Put(int id, [FromBody] TAdmConfiguracion value)
         {
-            var configuarcion = _context.TAdmConfiguracion.FirstOrDefault(c => c.PKCONFIGURACION == id);
+            var configuarcion = _context.TAdmConfiguracion.FirstOrDefault(c => c.PKCONFIGURACION == value.PKCONFIGURACION);
             configuarcion.CORREOCONFIGURACION = value.CORREOCONFIGURACION;
             configuarcion.PATHCONFIGURACION = value.PATHCONFIGURACION;
             _context.TAdmConfiguracion.Update(configuarcion);
