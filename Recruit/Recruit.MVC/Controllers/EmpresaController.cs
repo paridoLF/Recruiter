@@ -7,7 +7,7 @@ using System.Net.Http;
 using Recruit.MVC.Models;
 using Newtonsoft.Json;
 
-// /controladores empresa.
+// controladores empresa.
 namespace Recruit.MVC.Controllers
 {
     public class EmpresaController : Controller
