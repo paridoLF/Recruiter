@@ -14,7 +14,7 @@ namespace Recruit.MVC.Controllers
     {
 
 
-        string apiUrl = "http://localhost:53908/";
+        string apiUrl = "http://localhost:53907/"; 
         public async Task<IActionResult> Index()
         {
             List<OfertaTrabajoModel> OfertaTrabajoList = new List<OfertaTrabajoModel>();
