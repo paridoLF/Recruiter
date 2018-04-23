@@ -28,7 +28,7 @@ namespace Recruit.WebAPI.Controllers
             return _context.TAdmConfiguracion.ToList();
         }
 
-        //// GET: api/Configuracion/5
+        //// GET: api/Configuracion/5/
         [HttpGet("{id}", Name = "ConfiguracionGet")]
         public TAdmConfiguracion Get(int id)
         {
