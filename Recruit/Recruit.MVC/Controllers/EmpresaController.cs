@@ -7,15 +7,17 @@ using System.Net.Http;
 using Recruit.MVC.Models;
 using Newtonsoft.Json;
 
-// controladores empresa.
+// /controladores empresa.
 namespace Recruit.MVC.Controllers
 {
     public class EmpresaController : Controller
     {
-        public IActionResult Index()
+        string apiURL = "http://http://localhost:53907/";
+
+        public async Task<IActionResult> Index()
         {
-            List<EmpresaController.>
-            var apiURL = "http://http://localhost:53907/";
+            List<EmpresaModel> EmpresaList = new List<EmpresaModel>();
+
             using (var Empresa = new HttpClient())
             {
 
@@ -23,7 +25,15 @@ namespace Recruit.MVC.Controllers
                 Empresa.DefaultRequestHeaders.Accept.Clear();
                 Empresa.DefaultRequestHeaders.Accept.Add(new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue("apllication/jason"));
 
-                return View();
+                HttpResponseMessage res = await Empresa.GetAsync("api/Empresa");
+                if (res.IsSuccessStatusCode)
+                {
+                    var Empresaresult = res.Content.ReadAsStringAsync().Result;
+                    EmpresaList = JsonConvert.DeserializeObject<List<EmpresaModel>>(Empresaresult);
+                }
+
+                return View(EmpresaList);
+            }
         }
         public IActionResult Create()
         {

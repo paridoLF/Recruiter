@@ -1,8 +1,71 @@
-﻿
+﻿@model IEnumerable<Recruit.MVC.Models.EmpresaModel>
+
 @{
     ViewData["Title"] = "Index";
-    // Layout = "~/Views/Empresa/Index.cshtml";
 }
 
 <h2>Index</h2>
 
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Pkempresa)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Nombreempresa)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Direccionempresa)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Telefonoempresa)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Emailempresa)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Contactoempresa)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Estadoempresa)
+                </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Pkempresa)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nombreempresa)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Direccionempresa)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Telefonoempresa)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Emailempresa)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Contactoempresa)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Estadoempresa)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
