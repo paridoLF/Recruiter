@@ -28,7 +28,7 @@ namespace Recruit.WebAPI.Models
         {
             if (!optionsBuilder.IsConfigured)
             {
-                optionsBuilder.UseSqlServer(@"Server=SOPORTE;Database=Recruit_DB;Trusted_Connection=True;");
+                optionsBuilder.UseSqlServer(@"Server=LAB2-PC10;Database=Recruit_DB;Trusted_Connection=True;");
             }
         }
 

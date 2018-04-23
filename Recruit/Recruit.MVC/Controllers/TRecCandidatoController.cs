@@ -12,7 +12,7 @@ namespace Recruit.MVC.Controllers
 {
     public class TRecCandidatoController : Controller
     {
-        string apUrl = "http://localhost:53917/";
+        string apUrl = "http://localhost:53908/";
         public async Task<IActionResult> Index()
         {
             List<TRecCandidatoModel> candidatoList = new List<TRecCandidatoModel>();
