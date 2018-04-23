@@ -14,36 +14,27 @@ namespace Recruit.MVC.Controllers
     {
 
 
-        string apiUr=""
-        public IActionResult Index()
+        string apiUrl = "http://localhost:53908/";
+        public async Task<IActionResult> Index()
         {
+            List<OfertaTrabajoModel> OfertaTrabajoList = new List<OfertaTrabajoModel>();
 
+            using (var client = new HttpClient())
 
+            {
+                client.BaseAddress = new Uri(apiUrl);
+                client.DefaultRequestHeaders.Accept.Clear();
+                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
-            //using (var client = new HttpClient())
+                 HttpResponseMessage res = await client.GetAsync("api/OfertaTrabajo");
 
-            //{
-            //    client.BaseAddress = new Uri("http://llldlddl");
-            //    client.DefaultRequestHeaders.Accept.Clear();
-            //    client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-
-            //    HttpResponseMessage response = await client.GetAsync("api/");
-            //    if (response.IsSuccessStatusCode)
-            //    {
-
-
-
-            //    }
-
-            //}
-
-
-
-
-
-
-
-            return View();
+                if (res.IsSuccessStatusCode)
+                {
+                    var ofertatrabajoResult = res.Content.ReadAsStringAsync().Result;
+                    OfertaTrabajoList = JsonConvert.DeserializeObject<List<OfertaTrabajoModel>>(ofertatrabajoResult);
+                }
+            }
+            return View(OfertaTrabajoList);
         }
 
         public IActionResult Create()

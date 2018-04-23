@@ -17,7 +17,7 @@ namespace Recruit.MVC.Controllers
         // GET: Usuarios
         public async Task<IActionResult> Index()
         {
-            List<UsuariosModel> UsuariosList = new List<UsuariosModel>();
+            List<UsuarioModel> UsuariosList = new List<UsuarioModel>();
             using (var cliente = new HttpClient())
 
             {
@@ -30,7 +30,7 @@ namespace Recruit.MVC.Controllers
                 if (response.IsSuccessStatusCode)
                 {
                     var usuariosResult = response.Content.ReadAsStringAsync().Result;
-                    UsuariosList = JsonConvert.DeserializeObject  <List<UsuariosModel>>(usuariosResult);
+                    UsuariosList = JsonConvert.DeserializeObject  <List<UsuarioModel>>(usuariosResult);
                 }
 
 
