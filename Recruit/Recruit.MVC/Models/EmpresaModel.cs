@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-
+// modelo empresa
 namespace Recruit.MVC.Models
 {
     public class EmpresaModel
