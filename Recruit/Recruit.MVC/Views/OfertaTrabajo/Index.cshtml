@@ -1,7 +1,89 @@
-﻿
+﻿@model IEnumerable<Recruit.MVC.Models.OfertaTrabajoModel>
+
 @{
     ViewData["Title"] = "Index";
 }
 
-<h2>Index Oferta Trabajo</h2>
+<h2>Index</h2>
 
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Pkofertatrabajo)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Descripcion)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Labores)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Idioma)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.NivelIdioma)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ConocimientosReq)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ConocimientosDes)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.BeneficiosLab)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Salario)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Empresa)
+                </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Pkofertatrabajo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Descripcion)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Labores)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Idioma)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NivelIdioma)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ConocimientosReq)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ConocimientosDes)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BeneficiosLab)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Salario)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Empresa)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
