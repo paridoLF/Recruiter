@@ -4,14 +4,36 @@ using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using System.Net.Http;
+using System.Net.Http.Headers;
+using Newtonsoft.Json;
 using Recruit.MVC.Models;
 
 namespace Recruit.MVC.Controllers
 {
     public class EstadoController : Controller
     {
-        public IActionResult Index()
+        string apiURL = "http://localhost:53908/";
+
+        public async Task<IActionResult> Index()
         {
+            List<Estado> estadoList = new List<Estado>();
+
+            using (var estado = new HttpClient())
+            {
+                estado.BaseAddress = new Uri(apiURL);
+                estado.DefaultRequestHeaders.Accept.Clear();
+                estado.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+
+                HttpResponseMessage res = await estado.GetAsync("api/Estado");
+
+                if (res.IsSuccessStatusCode)
+                {
+                    var estadoResult = res.Content.ReadAsStringAsync().Result;
+                    estadoList = JsonConvert.DeserializeObject<List<Estado>>(estadoResult);
+                }
+            }
+
             return View();
         }
 
