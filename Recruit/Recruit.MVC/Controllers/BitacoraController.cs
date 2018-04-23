@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Net.Http;
 using System.Net.Http.Headers;
+using Newtonsoft.Json;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -14,22 +15,27 @@ namespace Recruit.MVC.Controllers
     public class BitacoraController : Controller
     {
         // GET: Bitacora
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
+            string strApiUrl = "http://localhost:53907";
+
+            List<Bitacora> lstBitacora = new List<Bitacora>();
+
             using (var vCliente = new HttpClient())
             {
-                //vCliente.BaseAddress = new Uri("http://localhost:53907");
-                //vCliente.DefaultRequestHeaders.Accept.Clear();
-                //vCliente.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+                vCliente.BaseAddress = new Uri(strApiUrl);
+                vCliente.DefaultRequestHeaders.Accept.Clear();
+                vCliente.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
-                //HttpResponseMessage hrmResponse = await vCliente.GetAsync("api/Bitacora/");
-                //if (hrmResponse.IsSuccessStatusCode)
-                //{
-                //    BitacoraController
-                //}
+                HttpResponseMessage hrmResponse = await vCliente.GetAsync("api/Bitacora/");
+                if (hrmResponse.IsSuccessStatusCode)
+                {
+                    var vBitacora = hrmResponse.Content.ReadAsStringAsync().Result;
+                    lstBitacora = JsonConvert.DeserializeObject<List<Bitacora>>(vBitacora);
+                }
 ;            }
 
-                return View();
+             return View(lstBitacora);
         }
 
         // GET: Bitacora/Details/5
