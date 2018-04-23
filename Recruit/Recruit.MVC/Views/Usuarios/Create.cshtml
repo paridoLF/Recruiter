@@ -1,8 +1,36 @@
-﻿
+﻿@model UsuariosModel;
 @{
     ViewData["Title"] = "Create";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <h2>Create</h2>
+<br />
 
+@using (Html.BeginForm())
+{
+    @Html.ValidationSummary(true, "Fallo del login, check los detalles")
+<div class="col-lg-10">Nombreusuario</div>
+<div class="col-lg-10"><input name="Nombreusuario" placeholder="Digite" /></div>
+
+<div class="col-lg-10">Cedulausuario</div>
+<div class="col-lg-10"><input name="Cedulausuario" placeholder="Digite" /></div>
+
+<div class="col-lg-10">Cedula</div>
+<div class="col-lg-10"><input name="Cedula" placeholder="Digite" /></div>
+
+<div class="col-lg-10">Loginusuario</div>
+<div class="col-lg-10"><input name="Loginusuario" placeholder="Digite" /></div>
+
+
+<div class="col-lg-10">Passwordusuario</div>
+<div class="col-lg-10"><input name="Passwordusuario" placeholder="Digite" /></div>
+
+
+
+<div class="col-lg-10">Rol</div>
+<div class="col-lg-10"><select name="Fkrol" placeholder="Digite" /></div>
+
+
+
+}

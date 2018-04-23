@@ -2,27 +2,44 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using System.Net.Http;
+using System.Net.Http.Headers;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+
+using Recruit.MVC.Models;
 
 namespace Recruit.MVC.Controllers
 {
     public class BitacoraController : Controller
     {
         // GET: Bitacora
-        public ActionResult Index()
+        public IActionResult Index()
         {
-            return View();
+            using (var vCliente = new HttpClient())
+            {
+                //vCliente.BaseAddress = new Uri("http://localhost:53907");
+                //vCliente.DefaultRequestHeaders.Accept.Clear();
+                //vCliente.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+
+                //HttpResponseMessage hrmResponse = await vCliente.GetAsync("api/Bitacora/");
+                //if (hrmResponse.IsSuccessStatusCode)
+                //{
+                //    BitacoraController
+                //}
+;            }
+
+                return View();
         }
 
         // GET: Bitacora/Details/5
-        public ActionResult Details(int id)
+        public IActionResult Details(int id)
         {
             return View();
         }
 
         // GET: Bitacora/Create
-        public ActionResult Create()
+        public IActionResult Create()
         {
             return View();
         }
@@ -30,7 +47,7 @@ namespace Recruit.MVC.Controllers
         // POST: Bitacora/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
+        public IActionResult Create(IFormCollection collection)
         {
             try
             {
@@ -45,7 +62,7 @@ namespace Recruit.MVC.Controllers
         }
 
         // GET: Bitacora/Edit/5
-        public ActionResult Edit(int id)
+        public IActionResult Edit(int id)
         {
             return View();
         }
@@ -53,7 +70,7 @@ namespace Recruit.MVC.Controllers
         // POST: Bitacora/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
+        public IActionResult Edit(int id, IFormCollection collection)
         {
             try
             {
@@ -68,7 +85,7 @@ namespace Recruit.MVC.Controllers
         }
 
         // GET: Bitacora/Delete/5
-        public ActionResult Delete(int id)
+        public IActionResult Delete(int id)
         {
             return View();
         }
@@ -76,7 +93,7 @@ namespace Recruit.MVC.Controllers
         // POST: Bitacora/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
+        public IActionResult Delete(int id, IFormCollection collection)
         {
             try
             {
