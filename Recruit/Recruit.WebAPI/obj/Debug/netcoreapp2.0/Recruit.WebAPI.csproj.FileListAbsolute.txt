@@ -18,3 +18,14 @@ C:\Users\Admin\Documents\GitHub\Recruiter\Recruit\Recruit.WebAPI\obj\Debug\netco
 C:\Users\Admin\Documents\GitHub\Recruiter\Recruit\Recruit.WebAPI\obj\Debug\netcoreapp2.0\Recruit.WebAPI.AssemblyInfo.cs
 C:\Users\Admin\Documents\GitHub\Recruiter\Recruit\Recruit.WebAPI\obj\Debug\netcoreapp2.0\Recruit.WebAPI.dll
 C:\Users\Admin\Documents\GitHub\Recruiter\Recruit\Recruit.WebAPI\obj\Debug\netcoreapp2.0\Recruit.WebAPI.pdb
+C:\Users\Admin\Documents\Cristian\Cambios\Recruiter\Recruit\Recruit.WebAPI\bin\Debug\netcoreapp2.0\Recruit.WebAPI.deps.json
+C:\Users\Admin\Documents\Cristian\Cambios\Recruiter\Recruit\Recruit.WebAPI\bin\Debug\netcoreapp2.0\Recruit.WebAPI.runtimeconfig.json
+C:\Users\Admin\Documents\Cristian\Cambios\Recruiter\Recruit\Recruit.WebAPI\bin\Debug\netcoreapp2.0\Recruit.WebAPI.runtimeconfig.dev.json
+C:\Users\Admin\Documents\Cristian\Cambios\Recruiter\Recruit\Recruit.WebAPI\bin\Debug\netcoreapp2.0\Recruit.WebAPI.dll
+C:\Users\Admin\Documents\Cristian\Cambios\Recruiter\Recruit\Recruit.WebAPI\bin\Debug\netcoreapp2.0\Recruit.WebAPI.pdb
+C:\Users\Admin\Documents\Cristian\Cambios\Recruiter\Recruit\Recruit.WebAPI\obj\Debug\netcoreapp2.0\Recruit.WebAPI.csprojResolveAssemblyReference.cache
+C:\Users\Admin\Documents\Cristian\Cambios\Recruiter\Recruit\Recruit.WebAPI\obj\Debug\netcoreapp2.0\Recruit.WebAPI.csproj.CoreCompileInputs.cache
+C:\Users\Admin\Documents\Cristian\Cambios\Recruiter\Recruit\Recruit.WebAPI\obj\Debug\netcoreapp2.0\Recruit.WebAPI.AssemblyInfoInputs.cache
+C:\Users\Admin\Documents\Cristian\Cambios\Recruiter\Recruit\Recruit.WebAPI\obj\Debug\netcoreapp2.0\Recruit.WebAPI.AssemblyInfo.cs
+C:\Users\Admin\Documents\Cristian\Cambios\Recruiter\Recruit\Recruit.WebAPI\obj\Debug\netcoreapp2.0\Recruit.WebAPI.dll
+C:\Users\Admin\Documents\Cristian\Cambios\Recruiter\Recruit\Recruit.WebAPI\obj\Debug\netcoreapp2.0\Recruit.WebAPI.pdb

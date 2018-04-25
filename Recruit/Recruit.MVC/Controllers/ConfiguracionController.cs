@@ -29,6 +29,8 @@ namespace Recruit.MVC.Controllers
 
                 HttpResponseMessage res = await configuracion.GetAsync("api/Configuracion");
 
+                
+
                 if (res.IsSuccessStatusCode) {
                     var configuracionresult = res.Content.ReadAsStringAsync().Result;
 
