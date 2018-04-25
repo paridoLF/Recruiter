@@ -33,7 +33,7 @@ namespace Recruit.MVC.Controllers
                 }
             }
 
-            return View();
+            return View(entrevistaList);
         }
 
         public IActionResult Create()
