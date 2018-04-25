@@ -13,7 +13,7 @@ namespace Recruit.MVC.Controllers
     public class ReclutadorController : Controller
     {
 
-        string apiUrl = "http://localhost:5555/";
+        string apiUrl = "http://localhost:53907/";
 
         public async Task<IActionResult> Index()
         {
