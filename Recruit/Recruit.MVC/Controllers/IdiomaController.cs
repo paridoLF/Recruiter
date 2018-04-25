@@ -34,7 +34,7 @@ namespace Recruit.MVC.Controllers
                 }
             }
 
-               return View();
+               return View(idiomaList);
         }
 
         public IActionResult Create()
