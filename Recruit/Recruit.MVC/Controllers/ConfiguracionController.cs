@@ -8,6 +8,8 @@ using System.Net.Http;
 using System.Net.Http.Headers;
 using Recruit.MVC.Models;
 using Newtonsoft.Json;
+using System.Net.Http.Formatting;
+
 
 
 namespace Recruit.MVC.Controllers
@@ -15,8 +17,8 @@ namespace Recruit.MVC.Controllers
     public class ConfiguracionController : Controller
     {
 
-        string apiUrl = "http://localhost:53907/";
-        public  async Task<IActionResult> Index()
+        string apiUrl = "http://localhost:53908/";
+        public async Task<IActionResult> Index()
         {
 
             List<ConfiguracionModel> configuracionList = new List<ConfiguracionModel>();
@@ -29,7 +31,7 @@ namespace Recruit.MVC.Controllers
 
                 HttpResponseMessage res = await configuracion.GetAsync("api/Configuracion");
 
-                
+
 
                 if (res.IsSuccessStatusCode) {
                     var configuracionresult = res.Content.ReadAsStringAsync().Result;
@@ -39,22 +41,64 @@ namespace Recruit.MVC.Controllers
             }
 
 
-                return View(configuracionList);
-        }   
+            return View(configuracionList);
+        }
 
         public IActionResult Create(int p)
         {
             return View();
         }
 
-        public IActionResult Edit(int p)
+        public async Task<IActionResult> Edit(int Id)
         {
-            return View();
+
+            ConfiguracionModel configuracionEdit = new ConfiguracionModel();
+
+            using (var configuracion = new HttpClient())
+            {
+
+                configuracion.BaseAddress = new Uri(apiUrl);
+                configuracion.DefaultRequestHeaders.Clear();
+                configuracion.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+
+                HttpResponseMessage res = await configuracion.GetAsync("api/Configuracion/" + Id);
+
+
+
+                if (res.IsSuccessStatusCode)
+                {
+                    var configuracionresult = res.Content.ReadAsStringAsync().Result;
+
+                    configuracionEdit = JsonConvert.DeserializeObject<ConfiguracionModel>(configuracionresult);
+                }
+            }
+
+            return View(configuracionEdit);
         }
 
-        public IActionResult Error()
+        [HttpPost]
+        public async Task<IActionResult> Edit (ConfiguracionModel configuracion)
         {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+
+            using (var config = new HttpClient())
+            {
+
+                config.BaseAddress = new Uri(apiUrl + "api/Configuracion");
+
+
+                var putEdit = config.PutAsJsonAsync<ConfiguracionModel>("configuracion", configuracion);
+                putEdit.Wait();
+
+
+                if (putEdit.Result.IsSuccessStatusCode)
+                {
+                    return RedirectToAction("Index");
+                }
+            }
+
+            return View(configuracion);
         }
+
+
     }
 }
