@@ -16,7 +16,10 @@ namespace Recruit.WebAPI.Controllers
     {
         private readonly Recruit_DBContext _context;
 
-
+        public UsuariosController(Recruit_DBContext context)
+        {
+            _context = context;
+        }
         // GET: api/Usuarios
         [HttpGet]
         public IEnumerable<TSegUsuario> UsuariosGetAll()
