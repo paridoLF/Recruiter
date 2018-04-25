@@ -22,7 +22,7 @@ namespace Recruit.MVC.Controllers
             using (var estado = new HttpClient())
             {
                 estado.BaseAddress = new Uri(apiURL);
-                estado.DefaultRequestHeaders.Accept.Clear();
+                estado.DefaultRequestHeaders.Clear();
                 estado.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
                 HttpResponseMessage res = await estado.GetAsync("api/Estado");
@@ -34,7 +34,7 @@ namespace Recruit.MVC.Controllers
                 }
             }
 
-            return View();
+            return View(estadoList);
         }
 
         public IActionResult Create()

@@ -16,7 +16,7 @@ namespace Recruit.MVC.Controllers
 
         public async Task<IActionResult> Index()
         {
-            List<Probabilidad> entrevistaList = new List<Probabilidad>();
+            List<Probabilidad> probabilidadList = new List<Probabilidad>();
 
             using (var probabilidad = new HttpClient())
             {
@@ -28,12 +28,12 @@ namespace Recruit.MVC.Controllers
 
                 if (res.IsSuccessStatusCode)
                 {
-                    var entrevistaResult = res.Content.ReadAsStringAsync().Result;
-                    entrevistaList = JsonConvert.DeserializeObject<List<Probabilidad>>(entrevistaResult);
+                    var probabilidadResult = res.Content.ReadAsStringAsync().Result;
+                    probabilidadList = JsonConvert.DeserializeObject<List<Probabilidad>>(probabilidadResult);
                 }
             }
 
-            return View();
+            return View(probabilidadList);
         }
 
         public IActionResult Create()
