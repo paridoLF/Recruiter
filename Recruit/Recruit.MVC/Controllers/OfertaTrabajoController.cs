@@ -15,7 +15,7 @@ namespace Recruit.MVC.Controllers
     {
 
 
-        string apiUrl = "http://localhost:53908/"; 
+        string apiUrl = "http://localhost:53908/";
         public async Task<IActionResult> Index()
         {
             List<OfertaTrabajoModel> OfertaTrabajoList = new List<OfertaTrabajoModel>();
@@ -27,7 +27,7 @@ namespace Recruit.MVC.Controllers
                 client.DefaultRequestHeaders.Accept.Clear();
                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
-                 HttpResponseMessage res = await client.GetAsync("api/OfertaTrabajo");
+                HttpResponseMessage res = await client.GetAsync("api/OfertaTrabajo");
 
                 if (res.IsSuccessStatusCode)
                 {
@@ -38,17 +38,38 @@ namespace Recruit.MVC.Controllers
             return View(OfertaTrabajoList);
         }
 
+
         public IActionResult Create()
         {
-          
-
-       
             return View();
         }
 
+        
 
-       
+        [HttpPost]
+        public async Task<IActionResult> Create(OfertaTrabajoModel OfertaTrabajo)
+        {
 
+
+            using (var client = new HttpClient())
+
+            {
+                client.BaseAddress = new Uri(apiUrl + "api/OfertaTrabajo");
+
+                var postOfertaTrabajo = client.PostAsJsonAsync<OfertaTrabajoModel>("OfertaTrabajo", OfertaTrabajo);
+                postOfertaTrabajo.Wait();
+
+                if (postOfertaTrabajo.Result.IsSuccessStatusCode)
+                {
+                    return RedirectToAction("Index");
+                }
+            }
+
+            return View(OfertaTrabajo);
+        }
+
+
+   
         public async Task<IActionResult> Edit(int id)
         {
 
@@ -72,8 +93,9 @@ namespace Recruit.MVC.Controllers
             return View(OfertaTrabajoEdit);
 
         }
+       
 
-       [HttpPost]
+        [HttpPost]
        public async Task<IActionResult> Edit(OfertaTrabajoModel OfertaTrabajo)
         {
 
@@ -95,6 +117,52 @@ namespace Recruit.MVC.Controllers
             return View(OfertaTrabajo);
 
         }
+
+
+        public ActionResult Delete(int id)
+        {
+            using (var client = new HttpClient())
+
+            {
+                client.BaseAddress = new Uri(apiUrl + "api/OfertaTrabajo/");
+
+                var deleteOfertaTrabajo = client.DeleteAsync(id.ToString());
+                deleteOfertaTrabajo.Wait();
+
+                if (deleteOfertaTrabajo.Result.IsSuccessStatusCode)
+                {
+                    return RedirectToAction("Index");
+                }
+
+            }
+            return RedirectToAction("Index");
+        }
+
+
+        public async Task<IActionResult> Details(int id)
+        {
+
+            OfertaTrabajoModel OfertaTrabajoEdit = new OfertaTrabajoModel();
+
+            using (var client = new HttpClient())
+
+            {
+                client.BaseAddress = new Uri(apiUrl);
+                client.DefaultRequestHeaders.Accept.Clear();
+                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+
+                HttpResponseMessage res = await client.GetAsync("api/OfertaTrabajo/" + id);
+
+                if (res.IsSuccessStatusCode)
+                {
+                    var ofertatrabajoResult = res.Content.ReadAsStringAsync().Result;
+                    OfertaTrabajoEdit = JsonConvert.DeserializeObject<OfertaTrabajoModel>(ofertatrabajoResult);
+                }
+            }
+            return View(OfertaTrabajoEdit);
+
+        }
+
 
     }
 }
