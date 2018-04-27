@@ -12,9 +12,9 @@
 <table class="table">
     <thead>
         <tr>
-                <th>
+                @*<th>
                     @Html.DisplayNameFor(model => model.Pkentrevista)
-                </th>
+                </th>*@
                 <th>
                     @Html.DisplayNameFor(model => model.Experienciaentrevita)
                 </th>
@@ -27,7 +27,7 @@
                 <th>
                     @Html.DisplayNameFor(model => model.Expectsalentrevista)
                 </th>
-                <th>
+                @*<th>
                     @Html.DisplayNameFor(model => model.Fkcandidato)
                 </th>
                 <th>
@@ -38,16 +38,16 @@
                 </th>
                 <th>
                     @Html.DisplayNameFor(model => model.Fkprobabilidad)
-                </th>
+                </th>*@
             <th></th>
         </tr>
     </thead>
     <tbody>
 @foreach (var item in Model) {
         <tr>
-            <td>
+            @*<td>
                 @Html.DisplayFor(modelItem => item.Pkentrevista)
-            </td>
+            </td>*@
             <td>
                 @Html.DisplayFor(modelItem => item.Experienciaentrevita)
             </td>
@@ -60,7 +60,7 @@
             <td>
                 @Html.DisplayFor(modelItem => item.Expectsalentrevista)
             </td>
-            <td>
+            @*<td>
                 @Html.DisplayFor(modelItem => item.Fkcandidato)
             </td>
             <td>
@@ -71,9 +71,9 @@
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Fkprobabilidad)
-            </td>
+            </td>*@
             <td>
-                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Edit", "Edit", new { id=item.Pkentrevista }) |
                 @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
                 @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
             </td>

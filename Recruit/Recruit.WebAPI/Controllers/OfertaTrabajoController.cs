@@ -58,11 +58,11 @@ namespace Recruit.WebAPI.Controllers
         }
         
         // PUT: api/OfertaTrabajo/5
-        [HttpPut("{id}")]
+        [HttpPut]
        
-        public void Put(int id, [FromBody]TRecOfertatrabajo value)
+        public void Put([FromBody]TRecOfertatrabajo value)
         {
-            var OfertaTrabajo = _context.TRecOfertatrabajo.Where(p => p.Pkofertatrabajo == id).First();
+            var OfertaTrabajo = _context.TRecOfertatrabajo.Where(p => p.Pkofertatrabajo == value.Pkofertatrabajo).First();
 
             OfertaTrabajo.Descripcion = value.Descripcion;
             OfertaTrabajo.Empresa = value.Empresa;

@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using System.Net.Http;
 using Recruit.MVC.Models;
+using System.Net.Http.Formatting;
 using System.Net.Http.Headers;
 using Newtonsoft.Json;
 
@@ -12,7 +13,7 @@ namespace Recruit.MVC.Controllers
 {
     public class ProbabilidadController : Controller
     {
-        string apiUrl = "http://localhost:53907/";
+        string apiUrl = "http://localhost:53908/";
 
         public async Task<IActionResult> Index()
         {
@@ -43,11 +44,44 @@ namespace Recruit.MVC.Controllers
             return View();
         }
 
-        public IActionResult Edit()
+        public async Task<IActionResult> Edit(int id)
         {
-            ViewData["Message"] = "Edit";
+            Probabilidad probabilidadEdit = new Probabilidad();
 
-            return View();
+            using (var probabilidad = new HttpClient())
+            {
+                probabilidad.BaseAddress = new Uri(apiUrl);
+                probabilidad.DefaultRequestHeaders.Clear();
+                probabilidad.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+
+                HttpResponseMessage res = await probabilidad.GetAsync("api/Probabilidad/" + id);
+
+                if (res.IsSuccessStatusCode)
+                {
+                    var probabilidadResult = res.Content.ReadAsStringAsync().Result;
+                    probabilidadEdit = JsonConvert.DeserializeObject<Probabilidad>(probabilidadResult);
+                }
+            }
+
+            return View(probabilidadEdit);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Edit(Probabilidad probabilidad)
+        {
+            using (var client = new HttpClient())
+            {
+                client.BaseAddress = new Uri(apiUrl + "api/Probabilidad");
+
+                var putProbabilidad = client.PutAsJsonAsync<Probabilidad>("Probabilidad", probabilidad);
+                putProbabilidad.Wait();
+
+                if (putProbabilidad.Result.IsSuccessStatusCode)
+                {
+                    return RedirectToAction("Index");
+                }
+            }
+            return View(probabilidad);
         }
     }
 }

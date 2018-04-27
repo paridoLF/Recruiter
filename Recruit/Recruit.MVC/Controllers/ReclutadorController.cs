@@ -5,8 +5,10 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using System.Net.Http;
 using System.Net.Http.Headers;
+using System.Net.Http.Formatting;
 using Newtonsoft.Json;
 using Recruit.MVC.Models;
+
 
 namespace Recruit.MVC.Controllers
 {
@@ -40,9 +42,48 @@ namespace Recruit.MVC.Controllers
             return View();
         }
 
-        public IActionResult Edit()
+        public async Task<IActionResult> Edit(int id)
         {
-            return View();
+            ReclutadorModel reclutadorEdit = new ReclutadorModel();
+
+            using (var client = new HttpClient())
+            {
+                client.BaseAddress = new Uri(apiUrl);
+                client.DefaultRequestHeaders.Clear();
+                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+
+                HttpResponseMessage res = await client.GetAsync("api/Reclutador/" + id);
+
+                if (res.IsSuccessStatusCode)
+                {
+                    var reclutadorResult = res.Content.ReadAsStringAsync().Result;
+                    reclutadorEdit = JsonConvert.DeserializeObject<ReclutadorModel>(reclutadorResult);
+
+                }
+            }
+            return View(reclutadorEdit);
         }
+
+        [HttpPost]
+        public async Task<IActionResult> Edit(ReclutadorModel reclutador) {
+
+             using (var client = new HttpClient())
+            {
+                client.BaseAddress = new Uri(apiUrl + "api/Reclutador");
+
+                var putReclutador = client.PutAsJsonAsync<ReclutadorModel>("Reclutador", reclutador);
+                putReclutador.Wait();
+
+                if (putReclutador.Result.IsSuccessStatusCode)
+                {
+                    return RedirectToAction("Index");
+
+                }
+            }
+
+            return View(reclutador);
+        }
+
+
     }
 }
