@@ -12,9 +12,9 @@
 <table class="table">
     <thead>
         <tr>
-                <th>
+                @*<th>
                     @Html.DisplayNameFor(model => model.Pkprobabilidad)
-                </th>
+                </th>*@
                 <th>
                     @Html.DisplayNameFor(model => model.Descripcionprobabilidad)
                 </th>
@@ -24,16 +24,16 @@
     <tbody>
 @foreach (var item in Model) {
         <tr>
-            <td>
+            @*<td>
                 @Html.DisplayFor(modelItem => item.Pkprobabilidad)
-            </td>
+            </td>*@
             <td>
                 @Html.DisplayFor(modelItem => item.Descripcionprobabilidad)
             </td>
             <td>
-                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+                @Html.ActionLink("Edit", "Edit", new { id=item.Pkprobabilidad }) |
+                @Html.ActionLink("Details", "Details", new { id=item.Pkprobabilidad }) |
+                @Html.ActionLink("Delete", "Delete", new {  id=item.Pkprobabilidad  })
             </td>
         </tr>
 }

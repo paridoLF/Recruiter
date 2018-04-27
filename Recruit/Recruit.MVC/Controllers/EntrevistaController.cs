@@ -12,7 +12,7 @@ namespace Recruit.MVC.Controllers
 {
     public class EntrevistaController : Controller
     {
-        string apiUrl = "http://localhost:53907/";
+        string apiUrl = "http://localhost:53908/";
 
         public async Task<IActionResult> Index()
         {
@@ -43,11 +43,26 @@ namespace Recruit.MVC.Controllers
             return View();
         }
 
-        public IActionResult Edit()
+        public async Task<IActionResult> Edit(int id)
         {
-            ViewData["Message"] = "Edit";
+            Entrevista entrevistaEdit = new Entrevista();
 
-            return View();
+            using (var entrevista = new HttpClient())
+            {
+                entrevista.BaseAddress = new Uri(apiUrl);
+                entrevista.DefaultRequestHeaders.Clear();
+                entrevista.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+
+                HttpResponseMessage res = await entrevista.GetAsync("api/Entrevista/" + id);
+
+                if (res.IsSuccessStatusCode)
+                {
+                    var entrevistaResult = res.Content.ReadAsStringAsync().Result;
+                    entrevistaEdit = JsonConvert.DeserializeObject<Entrevista>(entrevistaResult);
+                }
+            }
+
+            return View(entrevistaEdit);
         }
     }
 }

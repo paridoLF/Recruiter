@@ -54,10 +54,10 @@ namespace Recruit.WebAPI.Controllers
 
         // PUT: api/TRecCandidato/5
         //[HttpPut("{id}")]
-        [HttpPut("{id}")]
+        [HttpPut]
         public void Put(int id, [FromBody]TRecCandidato value)
         {
-            var candidato = _context.TRecCandidato.Where(TRecCandidato => TRecCandidato.Pkcandidato == id).First();
+            var candidato = _context.TRecCandidato.Where(TRecCandidato => TRecCandidato.Pkcandidato == value.Pkcandidato).First();
 
             candidato.Nombre = value.Nombre;
             candidato.Estado = value.Estado;
