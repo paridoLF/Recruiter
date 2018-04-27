@@ -7,14 +7,14 @@
 <h2>Index</h2>
 
 <p>
-    <a asp-action="Create">Create New</a>
+    <a asp-action="Create"  >Create New</a>
 </p>
 <table class="table">
     <thead>
         <tr>
-                <th>
+                @*<th>
                     @Html.DisplayNameFor(model => model.Pkofertatrabajo)
-                </th>
+                </th>*@
                 <th>
                     @Html.DisplayNameFor(model => model.Descripcion)
                 </th>
@@ -48,9 +48,9 @@
     <tbody>
 @foreach (var item in Model) {
         <tr>
-            <td>
+            @*<td>
                 @Html.DisplayFor(modelItem => item.Pkofertatrabajo)
-            </td>
+            </td>*@
             <td>
                 @Html.DisplayFor(modelItem => item.Descripcion)
             </td>
@@ -79,9 +79,9 @@
                 @Html.DisplayFor(modelItem => item.Empresa)
             </td>
             <td>
-                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+                @Html.ActionLink("Edit", "Edit", new {id=item.Pkofertatrabajo}) |
+                @Html.ActionLink("Details", "Details", new { id = item.Pkofertatrabajo }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.Pkofertatrabajo })
             </td>
         </tr>
 }

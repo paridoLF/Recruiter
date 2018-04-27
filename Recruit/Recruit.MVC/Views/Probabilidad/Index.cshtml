@@ -1,7 +1,41 @@
-﻿
+﻿@model IEnumerable<Recruit.MVC.Models.Probabilidad>
+
 @{
     ViewData["Title"] = "Index";
 }
 
-<h2>Index Probabilidad</h2>
+<h2>Index</h2>
 
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+                @*<th>
+                    @Html.DisplayNameFor(model => model.Pkprobabilidad)
+                </th>*@
+                <th>
+                    @Html.DisplayNameFor(model => model.Descripcionprobabilidad)
+                </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            @*<td>
+                @Html.DisplayFor(modelItem => item.Pkprobabilidad)
+            </td>*@
+            <td>
+                @Html.DisplayFor(modelItem => item.Descripcionprobabilidad)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id=item.Pkprobabilidad }) |
+                @Html.ActionLink("Create", "Create", new { /*id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

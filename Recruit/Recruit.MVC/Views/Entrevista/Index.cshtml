@@ -1,7 +1,83 @@
-﻿
+﻿@model IEnumerable<Recruit.MVC.Models.Entrevista>
+
 @{
     ViewData["Title"] = "Index";
 }
 
-<h2>Index Entrevista</h2>
+<h2>Index</h2>
 
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+                @*<th>
+                    @Html.DisplayNameFor(model => model.Pkentrevista)
+                </th>*@
+                <th>
+                    @Html.DisplayNameFor(model => model.Experienciaentrevita)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Trabajoantentrevista)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Referenciasentrevista)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Expectsalentrevista)
+                </th>
+                @*<th>
+                    @Html.DisplayNameFor(model => model.Fkcandidato)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Fkestado)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Fkidioma)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Fkprobabilidad)
+                </th>*@
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            @*<td>
+                @Html.DisplayFor(modelItem => item.Pkentrevista)
+            </td>*@
+            <td>
+                @Html.DisplayFor(modelItem => item.Experienciaentrevita)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Trabajoantentrevista)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Referenciasentrevista)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Expectsalentrevista)
+            </td>
+            @*<td>
+                @Html.DisplayFor(modelItem => item.Fkcandidato)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Fkestado)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Fkidioma)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Fkprobabilidad)
+            </td>*@
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id=item.Pkentrevista }) |
+                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
