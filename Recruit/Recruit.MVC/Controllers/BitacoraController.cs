@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Net.Http;
 using System.Net.Http.Headers;
+using System.Net.Http.Formatting;
 using Newtonsoft.Json;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -14,6 +15,9 @@ namespace Recruit.MVC.Controllers
 {
     public class BitacoraController : Controller
     {
+        string strApiUrl = "http://localhost:53907/";
+
+
         // GET: Bitacora
         public async Task<IActionResult> Index()
         {
@@ -45,7 +49,7 @@ namespace Recruit.MVC.Controllers
         }
 
         // GET: Bitacora/Create
-        public IActionResult Create()
+        public IActionResult Crear()
         {
             return View();
         }
@@ -53,45 +57,72 @@ namespace Recruit.MVC.Controllers
         // POST: Bitacora/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Create(IFormCollection collection)
+        public IActionResult Crear(Bitacora p_Bitacora)
         {
-            try
+            using (var vCliente = new HttpClient())
             {
-                // TODO: Add insert logic here
+                vCliente.BaseAddress = new Uri(strApiUrl + "api/Bitacora");
 
-                return RedirectToAction(nameof(Index));
+                var putBitacora = vCliente.PostAsJsonAsync<Bitacora>("Bitacora", p_Bitacora);
+
+                putBitacora.Wait();
+
+                if (putBitacora.Result.IsSuccessStatusCode)
+                {
+                    return RedirectToAction("Index");
+                }
+
             }
-            catch
-            {
-                return View();
-            }
+            return View(p_Bitacora);
         }
 
         // GET: Bitacora/Edit/5
-        public IActionResult Edit(int id)
+        public async Task<IActionResult> Editar(int id)
         {
-            return View();
+
+            Bitacora lstBitacora = new Bitacora();
+
+            using (var vCliente = new HttpClient())
+            {
+                vCliente.BaseAddress = new Uri(strApiUrl);
+                vCliente.DefaultRequestHeaders.Accept.Clear();
+                vCliente.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+
+                HttpResponseMessage hrmResponse = await vCliente.GetAsync("api/Bitacora/" + id);
+                if (hrmResponse.IsSuccessStatusCode)
+                {
+                    var vBitacora = hrmResponse.Content.ReadAsStringAsync().Result;
+                    lstBitacora = JsonConvert.DeserializeObject<Bitacora>(vBitacora);
+                }
+;
+            }
+
+            return View(lstBitacora);
         }
 
         // POST: Bitacora/Edit/5
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public IActionResult Edit(int id, IFormCollection collection)
+        public async Task<IActionResult> Editar(Bitacora p_Bitacora)
         {
-            try
+            using (var vCliente = new HttpClient())
             {
-                // TODO: Add update logic here
+                vCliente.BaseAddress = new Uri(strApiUrl + "api/Bitacora");
+                
+                var putBitacora = vCliente.PutAsJsonAsync<Bitacora>("Bitacora", p_Bitacora);
 
-                return RedirectToAction(nameof(Index));
+                putBitacora.Wait();
+
+                if (putBitacora.Result.IsSuccessStatusCode)
+                {
+                    return RedirectToAction("Index");
+                }
+
             }
-            catch
-            {
-                return View();
-            }
+            return View(p_Bitacora);
         }
 
         // GET: Bitacora/Delete/5
-        public IActionResult Delete(int id)
+        public IActionResult Elimina(int id)
         {
             return View();
         }
@@ -99,7 +130,7 @@ namespace Recruit.MVC.Controllers
         // POST: Bitacora/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Delete(int id, IFormCollection collection)
+        public IActionResult Elimina(int id, IFormCollection collection)
         {
             try
             {
