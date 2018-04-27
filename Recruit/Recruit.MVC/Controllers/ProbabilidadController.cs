@@ -39,12 +39,50 @@ namespace Recruit.MVC.Controllers
 
         public IActionResult Create()
         {
-            ViewData["Message"] = "Create";
-
             return View();
         }
 
+        [HttpPost]
+        public IActionResult Create(Probabilidad probabilidad)
+        {
+            using (var client = new HttpClient())
+            {
+                client.BaseAddress = new Uri(apiUrl + "api/Probabilidad");
+
+                var postProbabilidad = client.PostAsJsonAsync<Probabilidad>("Probabilidad", probabilidad);
+                postProbabilidad.Wait();
+
+                if (postProbabilidad.Result.IsSuccessStatusCode)
+                {
+                    return RedirectToAction("Index");
+                }
+            }
+            return View(probabilidad);
+        }
+
         public async Task<IActionResult> Edit(int id)
+        {
+            Probabilidad probabilidadEdit = new Probabilidad();
+
+            using (var probabilidad = new HttpClient())
+            {
+                probabilidad.BaseAddress = new Uri(apiUrl);
+                probabilidad.DefaultRequestHeaders.Clear();
+                probabilidad.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+
+                HttpResponseMessage res = await probabilidad.GetAsync("api/Probabilidad/" + id);
+
+                if (res.IsSuccessStatusCode)
+                {
+                    var probabilidadResult = res.Content.ReadAsStringAsync().Result;
+                    probabilidadEdit = JsonConvert.DeserializeObject<Probabilidad>(probabilidadResult);
+                }
+            }
+
+            return View(probabilidadEdit);
+        }
+
+        public async Task<IActionResult> Details(int id)
         {
             Probabilidad probabilidadEdit = new Probabilidad();
 
@@ -82,6 +120,23 @@ namespace Recruit.MVC.Controllers
                 }
             }
             return View(probabilidad);
+        }
+
+        public ActionResult Delete(int id)
+        {
+            using (var client = new HttpClient())
+            {
+                client.BaseAddress = new Uri(apiUrl + "api/Probabilidad/");
+
+                var deleteProbabilidad = client.DeleteAsync(id.ToString());
+                deleteProbabilidad.Wait();
+
+                if (deleteProbabilidad.Result.IsSuccessStatusCode)
+                {
+                    return RedirectToAction("Index");
+                }
+            }
+            return RedirectToAction("Index");
         }
     }
 }

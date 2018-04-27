@@ -30,13 +30,13 @@ namespace Recruit.WebAPI.Controllers
         [HttpGet("{id}", Name = "ProbabilidadGet")]
         public TRecProbabilidad ProbabilidadGet(int id)
         {
-            var probabilidad = _context.TRecProbabilidad.FirstOrDefault(m => m.Pkprobabilidad == id);
+            var probabilidad = _context.TRecProbabilidad.Where(m => m.Pkprobabilidad == id);
 
             if (probabilidad == null)
             {
                 return null;
             }
-            return probabilidad;
+            return probabilidad.FirstOrDefault();
         }
 
         // POST: api/Probabilidad
@@ -48,13 +48,16 @@ namespace Recruit.WebAPI.Controllers
         }
 
         // PUT: api/Probabilidad/5
-        [HttpPut("{id}")]
+        [HttpPut]
         public void Put(int id, [FromBody]TRecProbabilidad value)
         {
-            var probabilidad = _context.TRecProbabilidad.Where(TRecProbabilidad => TRecProbabilidad.Pkprobabilidad == id).First();
+            var cliente = _context.TRecProbabilidad.Where(m => m.Pkprobabilidad == value.Pkprobabilidad).First();
 
-            probabilidad.Descripcionprobabilidad = value.Descripcionprobabilidad;
+            cliente.Descripcionprobabilidad = value.Descripcionprobabilidad;
 
+            _context.Update(cliente);
+
+            // Guardamos los cambios
             _context.SaveChanges();
         }
 
@@ -62,9 +65,9 @@ namespace Recruit.WebAPI.Controllers
         [HttpDelete("{id}")]
         public void Delete(int id)
         {
-            var probabilidad = _context.TRecProbabilidad.Where(TRecProbabilidad => TRecProbabilidad.Pkprobabilidad == id).First();
+            var eliminarProbabilidad = _context.TRecProbabilidad.Where(m => m.Pkprobabilidad == id).First();
 
-            _context.TRecProbabilidad.Remove(probabilidad);
+            _context.TRecProbabilidad.Remove(eliminarProbabilidad);
             _context.SaveChanges();
          
         }
