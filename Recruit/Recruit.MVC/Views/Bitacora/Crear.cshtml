@@ -1,0 +1,60 @@
+﻿@model Recruit.MVC.Models.Bitacora
+
+@{
+    ViewData["Title"] = "Crear";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+<h2>Crear</h2>
+
+<h4>Bitacora</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Crear">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Pkbitacora" class="control-label"></label>
+                <input asp-for="Pkbitacora" class="form-control" />
+                <span asp-validation-for="Pkbitacora" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Accionbitacora" class="control-label"></label>
+                <input asp-for="Accionbitacora" class="form-control" />
+                <span asp-validation-for="Accionbitacora" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Tablabitacora" class="control-label"></label>
+                <input asp-for="Tablabitacora" class="form-control" />
+                <span asp-validation-for="Tablabitacora" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Fechabitacora" class="control-label"></label>
+                <input asp-for="Fechabitacora" class="form-control" />
+                <span asp-validation-for="Fechabitacora" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Registrobitacora" class="control-label"></label>
+                <input asp-for="Registrobitacora" class="form-control" />
+                <span asp-validation-for="Registrobitacora" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Paginabitacora" class="control-label"></label>
+                <input asp-for="Paginabitacora" class="form-control" />
+                <span asp-validation-for="Paginabitacora" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Crear" class="btn btn-default" />
+                <input type="button" value="Volver" onclick="back()" class="btn btn-default" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Volver</a>
+
+</div>
+

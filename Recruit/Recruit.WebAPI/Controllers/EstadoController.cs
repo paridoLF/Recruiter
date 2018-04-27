@@ -46,12 +46,12 @@ namespace Recruit.WebAPI.Controllers
             _context.TRecEstado.Add(value);
             _context.SaveChanges();
         }
-        
+
         // PUT: api/Estado/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody]TRecEstado value)
+        [HttpPut]
+        public void Put([FromBody]TRecEstado value)
         {
-            var estado = _context.TRecEstado.Where(TRecEstado => TRecEstado.Pkestado == id).First();
+            var estado = _context.TRecEstado.Where(TRecEstado => TRecEstado.Pkestado == value.Pkestado).First();
            
             estado.Descripcionestado = value.Descripcionestado;
 

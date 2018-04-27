@@ -24,7 +24,8 @@ namespace Recruit.WebAPI.Controllers
         [HttpGet]
         public IEnumerable<TSegUsuario> UsuariosGetAll()
         {
-            return _context.TSegUsuario.ToList();
+            var list = _context.TSegUsuario.Where(TSegUsuario => TSegUsuario.Activousuario == true).ToList();
+            return list;
             // return new string[] { "value1", "value2" };
         }
 
@@ -60,11 +61,11 @@ namespace Recruit.WebAPI.Controllers
         }
         
         // PUT: api/Usuarios/ UPDATE
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody]TSegUsuario value)
+        [HttpPut]
+        public void Put([FromBody]TSegUsuario value)
         {
           
-                var usuarios = _context.TSegUsuario.FirstOrDefault(u => u.Pkusuario == id);
+                var usuarios = _context.TSegUsuario.FirstOrDefault(u => u.Pkusuario == value.Pkusuario);
 
                 if (usuarios != null)
                 {
