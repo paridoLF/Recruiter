@@ -1,0 +1,78 @@
+﻿@model Recruit.MVC.Models.OfertaTrabajoModel
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>OfertaTrabajoModel</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Pkofertatrabajo)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Pkofertatrabajo)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Descripcion)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Descripcion)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Labores)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Labores)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Idioma)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Idioma)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.NivelIdioma)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.NivelIdioma)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.ConocimientosReq)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.ConocimientosReq)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.ConocimientosDes)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.ConocimientosDes)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.BeneficiosLab)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.BeneficiosLab)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Salario)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Salario)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Empresa)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Empresa)
+        </dd>
+    </dl>
+</div>
+<div>
+    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
+    <a asp-action="Index">Back to List</a>
+</div>

@@ -5,21 +5,24 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using System.Net.Http;
 using System.Net.Http.Headers;
+using System.Net.Http.Formatting;
 using Newtonsoft.Json;
 using Recruit.MVC.Models;
+
 
 namespace Recruit.MVC.Controllers
 {
     public class TRecCandidatoController : Controller
     {
-        string apUrl = "http://localhost:53908/";
+
+        string apiUrl = "http://localhost:53908/";
         public async Task<IActionResult> Index()
         {
             List<TRecCandidatoModel> candidatoList = new List<TRecCandidatoModel>();
 
             using (var candidato = new HttpClient())
             {
-                candidato.BaseAddress = new Uri(apUrl);
+                candidato.BaseAddress = new Uri(apiUrl);
                 candidato.DefaultRequestHeaders.Clear();
                 candidato.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
@@ -38,28 +41,105 @@ namespace Recruit.MVC.Controllers
 
             }
 
-                return View(candidatoList);
+            return View(candidatoList);
         }
 
         public IActionResult Create()
         {
-            //ViewData["Message"] = "Your application description page.";
-
             return View();
         }
 
-        public IActionResult Edit() 
+        [HttpPost]
+        public IActionResult Create(TRecCandidatoModel candidatoModel)
+        {
+            using (var candidato = new HttpClient())
+            {
+
+                candidato.BaseAddress = new Uri(apiUrl + "api/TRecCandidato");
+
+                var putCandidato = candidato.PostAsJsonAsync<TRecCandidatoModel>("TRecCandidato", candidatoModel);
+                putCandidato.Wait();
+
+                if (putCandidato.Result.IsSuccessStatusCode)
+                {
+                    return RedirectToAction("Index");
+                }
+
+            }
+
+            return View(candidatoModel);
+        }
+
+   
+        public async Task<IActionResult> Edit(int id)
         {
             //ViewData["Message"] = "Your contact page.";
 
-            return View();
+            TRecCandidatoModel candidatoEdit = new TRecCandidatoModel();
+
+            using (var candidato = new HttpClient())
+            {
+                candidato.BaseAddress = new Uri(apiUrl);
+                candidato.DefaultRequestHeaders.Clear();
+                candidato.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+
+
+                HttpResponseMessage res = await candidato.GetAsync("api/TRecCandidato/" + id);
+                //await es asincronica por eso se cambia el formato de la funcion de public IActionResult Index() 
+                //a public async Task<IActionResult> Index()
+
+                if (res.IsSuccessStatusCode)
+                {
+                    var candidatoResult = res.Content.ReadAsStringAsync().Result;
+
+                    candidatoEdit = JsonConvert.DeserializeObject<TRecCandidatoModel>(candidatoResult);
+
+                }
+
+            }
+            return View(candidatoEdit);
         }
 
-        public IActionResult Delete()
+        [HttpPost]
+        public async Task<IActionResult> Edit(TRecCandidatoModel candidatoModel)
         {
-            ViewData["Message"] = "Your contact page.";
 
-            return View();
+            using (var candidato = new HttpClient())
+            {
+
+                candidato.BaseAddress = new Uri(apiUrl + "api/TRecCandidato");
+
+                var putCandidato = candidato.PutAsJsonAsync<TRecCandidatoModel>("TRecCandidato", candidatoModel);
+                putCandidato.Wait();
+
+                if (putCandidato.Result.IsSuccessStatusCode)
+                {
+                    return RedirectToAction("Index");
+                }
+
+            }
+
+            return View(candidatoModel);
+        }
+
+
+        public ActionResult Delete(int id)
+        {
+            using (var candidato = new HttpClient())
+            {
+
+                candidato.BaseAddress = new Uri(apiUrl + "api/TRecCandidato/");
+
+                var delCandidato = candidato.DeleteAsync(id.ToString());
+                delCandidato.Wait();
+
+                if (delCandidato.Result.IsSuccessStatusCode)
+                {
+                    return RedirectToAction("Index");
+                }
+
+            }
+            return RedirectToAction("Index");
         }
     }
 }

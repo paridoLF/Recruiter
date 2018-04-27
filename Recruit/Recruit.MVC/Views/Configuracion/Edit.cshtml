@@ -1,4 +1,4 @@
-﻿@model IEnumerable<Recruit.MVC.Models.ConfiguracionModel>
+﻿@model Recruit.MVC.Models.ConfiguracionModel
 
 @{
     ViewData["Title"] = "Edit";
@@ -6,42 +6,38 @@
 
 <h2>Edit</h2>
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-                <th>
-                    @Html.DisplayNameFor(model => model.CORREOCONFIGURACION)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.PATHCONFIGURACION)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.PKCONFIGURACION)
-                </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.CORREOCONFIGURACION)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.PATHCONFIGURACION)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.PKCONFIGURACION)
-            </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
-            </td>
-        </tr>
+<h4>ConfiguracionModel</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="CORREOCONFIGURACION" class="control-label"></label>
+                <input asp-for="CORREOCONFIGURACION" class="form-control" />
+                <span asp-validation-for="CORREOCONFIGURACION" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PATHCONFIGURACION" class="control-label"></label>
+                <input asp-for="PATHCONFIGURACION" class="form-control" />
+                <span asp-validation-for="PATHCONFIGURACION" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PKCONFIGURACION" class="control-label"></label>
+                <input asp-for="PKCONFIGURACION" class="form-control" />
+                <span asp-validation-for="PKCONFIGURACION" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-default" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Regresar</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 }
-    </tbody>
-</table>
