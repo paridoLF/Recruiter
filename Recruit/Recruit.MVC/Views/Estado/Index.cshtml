@@ -4,7 +4,7 @@
     ViewData["Title"] = "Index";
 }
 
-<h2>Índice</h2>
+<h2>Índice de estado</h2>
 
 <p>
     <br />
@@ -14,9 +14,9 @@
 <table class="table">
     <thead>
         <tr>
-                <th>
+                @*<th>
                     @Html.DisplayNameFor(model => model.Pkestado)
-                </th>
+                </th>*@
                 <th>
                     @Html.DisplayNameFor(model => model.Descripcionestado)
                 </th>
@@ -26,16 +26,16 @@
     <tbody>
 @foreach (var item in Model) {
         <tr>
-            <td>
+            @*<td>
                 @Html.DisplayFor(modelItem => item.Pkestado)
-            </td>
+            </td>*@
             <td>
                 @Html.DisplayFor(modelItem => item.Descripcionestado)
             </td>
             <td>
-                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+                @Html.ActionLink("Edit", "Edit", new { id=item.Pkestado }) |
+                @Html.ActionLink("Details", "Details", new { id = item.Pkestado }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.Pkestado })
             </td>
         </tr>
 }

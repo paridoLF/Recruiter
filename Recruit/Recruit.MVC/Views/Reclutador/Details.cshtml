@@ -1,0 +1,48 @@
+﻿@model Recruit.MVC.Models.ReclutadorModel
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>ReclutadorModel</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Pkreclutador)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Pkreclutador)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Nombrereclutador)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Nombrereclutador)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Telefonoreclutador)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Telefonoreclutador)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Correoreclutador)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Correoreclutador)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Estadoreclutador)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Estadoreclutador)
+        </dd>
+    </dl>
+</div>
+<div>
+    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
+    <a asp-action="Index">Back to List</a>
+</div>

@@ -4,17 +4,19 @@
     ViewData["Title"] = "Index";
 }
 
-<h2>Index</h2>
+<h2>Índice de idioma</h2>
 
 <p>
+    <br />
     <a asp-action="Create">Create New</a>
+    <br />
 </p>
 <table class="table">
     <thead>
         <tr>
-                <th>
+                @*<th>
                     @Html.DisplayNameFor(model => model.Pkidioma)
-                </th>
+                </th>*@
                 <th>
                     @Html.DisplayNameFor(model => model.Descripcionidioma)
                 </th>
@@ -24,16 +26,16 @@
     <tbody>
 @foreach (var item in Model) {
         <tr>
-            <td>
+            @*<td>
                 @Html.DisplayFor(modelItem => item.Pkidioma)
-            </td>
+            </td>*@
             <td>
                 @Html.DisplayFor(modelItem => item.Descripcionidioma)
             </td>
             <td>
-                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+                @Html.ActionLink("Edit", "Edit", new { id=item.Pkidioma }) |
+                @Html.ActionLink("Details", "Details", new { id = item.Pkidioma }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.Pkidioma })
             </td>
         </tr>
 }
