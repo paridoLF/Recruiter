@@ -24,7 +24,8 @@ namespace Recruit.WebAPI.Controllers
         [HttpGet]
         public IEnumerable<TSegUsuario> UsuariosGetAll()
         {
-            return _context.TSegUsuario.ToList();
+            var list = _context.TSegUsuario.Where(TSegUsuario => TSegUsuario.Activousuario == true).ToList();
+            return list;
             // return new string[] { "value1", "value2" };
         }
 

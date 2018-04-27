@@ -42,9 +42,27 @@ namespace Recruit.MVC.Controllers
         }
         
         // GET: Usuarios/Details/5
-        public IActionResult Details(int id)
+        public async Task<IActionResult> Details(int id)
         {
-            return View();
+            UsuarioModel Usuarios = new UsuarioModel();
+
+            using (var cliente = new HttpClient())
+
+            {
+
+                cliente.BaseAddress = new Uri(UrlApi);
+                cliente.DefaultRequestHeaders.Accept.Clear();
+                cliente.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+                HttpResponseMessage response = await cliente.GetAsync("api/Usuarios/" + id);
+
+                if (response.IsSuccessStatusCode)
+                {
+                    var usuariosResult = response.Content.ReadAsStringAsync().Result;
+                    Usuarios = JsonConvert.DeserializeObject<UsuarioModel>(usuariosResult);
+                }
+
+            }
+            return View(Usuarios);
         }
 
         // GET: Usuarios/Create
@@ -78,7 +96,6 @@ namespace Recruit.MVC.Controllers
                     // var putUsuarios = cliente.PutAsync();
 
 
-
                     //HttpResponseMessage response = await cliente.PutAsync("api/Usuarios/", id);
 
                     if (PutUsuarios.Result.IsSuccessStatusCode)
@@ -93,9 +110,6 @@ namespace Recruit.MVC.Controllers
 
 
                 }
-
-
-
 
             }
             catch
@@ -173,10 +187,6 @@ namespace Recruit.MVC.Controllers
 
 
                 }
-
-
-               
-
             }
             catch
             {
@@ -189,24 +199,52 @@ namespace Recruit.MVC.Controllers
         // GET: Usuarios/Delete/5
         public IActionResult Delete(int id)
         {
-            return View();
+            UsuarioModel Usuarios = new UsuarioModel();
+
+
+            using (var cliente = new HttpClient())
+
+            {
+                cliente.BaseAddress = new Uri(UrlApi + "/api/Usuarios/");
+
+                var DeleteUsuarios  =  cliente.DeleteAsync(id.ToString());
+
+                if (DeleteUsuarios.Result.IsSuccessStatusCode)
+                {
+
+                    return RedirectToAction("Index");
+                }
+
+
+            }
+            return RedirectToAction("Index");
         }
 
         // POST: Usuarios/Delete/5
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public IActionResult Delete(int id, IFormCollection collection)
-        {
-            try
-            {
-                // TODO: Add delete logic here
+        //[HttpPost]
+        //[ValidateAntiForgeryToken]
+        //public async Task<IActionResult> Delete(int id, IFormCollection collection)
+        //{
+        //    UsuarioModel Usuarios = new UsuarioModel();
 
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
-        }
+        //    using (var cliente = new HttpClient())
+
+        //    {
+
+        //        cliente.BaseAddress = new Uri(UrlApi);
+        //        cliente.DefaultRequestHeaders.Accept.Clear();
+        //        cliente.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+        //        HttpResponseMessage response = await cliente.DeleteAsync("api/Usuarios/" + id);
+
+        //        if (response.IsSuccessStatusCode)
+        //        {
+        //            var usuariosResult = response.Content.ReadAsStringAsync().Result;
+        //            Usuarios = JsonConvert.DeserializeObject<UsuarioModel>(usuariosResult);
+        //        }
+
+
+        //    }
+        //    return View(Usuarios);
+        //}
     }
 }
