@@ -1,7 +1,73 @@
-﻿
+﻿@model Recruit.MVC.Models.Entrevista
+
 @{
     ViewData["Title"] = "Create";
 }
 
-<h2>Create Entrevista</h2>
+<h2>Create</h2>
 
+<h4>Entrevista</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Pkentrevista" class="control-label"></label>
+                <input asp-for="Pkentrevista" class="form-control" />
+                <span asp-validation-for="Pkentrevista" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Experienciaentrevita" class="control-label"></label>
+                <input asp-for="Experienciaentrevita" class="form-control" />
+                <span asp-validation-for="Experienciaentrevita" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Trabajoantentrevista" class="control-label"></label>
+                <input asp-for="Trabajoantentrevista" class="form-control" />
+                <span asp-validation-for="Trabajoantentrevista" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Referenciasentrevista" class="control-label"></label>
+                <input asp-for="Referenciasentrevista" class="form-control" />
+                <span asp-validation-for="Referenciasentrevista" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Expectsalentrevista" class="control-label"></label>
+                <input asp-for="Expectsalentrevista" class="form-control" />
+                <span asp-validation-for="Expectsalentrevista" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Fkcandidato" class="control-label"></label>
+                <input asp-for="Fkcandidato" class="form-control" />
+                <span asp-validation-for="Fkcandidato" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Fkestado" class="control-label"></label>
+                <input asp-for="Fkestado" class="form-control" />
+                <span asp-validation-for="Fkestado" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Fkidioma" class="control-label"></label>
+                <input asp-for="Fkidioma" class="form-control" />
+                <span asp-validation-for="Fkidioma" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Fkprobabilidad" class="control-label"></label>
+                <input asp-for="Fkprobabilidad" class="form-control" />
+                <span asp-validation-for="Fkprobabilidad" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
