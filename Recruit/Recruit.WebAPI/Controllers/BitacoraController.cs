@@ -43,7 +43,6 @@ namespace Recruit.WebAPI.Controllers
         
         // POST: api/Bitacora     Insertar registro
         [HttpPost]
-        [Route("api/Bitacora/{id}")]
         public void Post([FromBody]TSegBitacora value)
         {
             _context.TSegBitacora.Add(value);
@@ -72,21 +71,20 @@ namespace Recruit.WebAPI.Controllers
         }
         
         // DELETE: api/ApiWithActions/5 Borrar el registro
-        [HttpDelete("{id}")]
-        [Route("api/Bitacora/{id}")]
-        public void Delete(int id)
+        [HttpDelete("{PkBitacora}")]
+        [Route("api/Bitacora/{PkBitacora}")]
+        public void Delete(int PkBitacora)
         {
-            var vBitacora = _context.TSegBitacora.FirstOrDefault(t => t.Pkbitacora == id);
+            var vBitacora = _context.TSegBitacora.FirstOrDefault(t => t.Pkbitacora == PkBitacora);
 
 
             if (vBitacora != null)
             {
-                
+                vBitacora.Accionbitacora = "Borrado";
 
                 _context.TSegBitacora.Update(vBitacora);
                 _context.SaveChanges();
             }
-
         }
     }
 }

@@ -1,0 +1,55 @@
+﻿@model Recruit.MVC.Models.Bitacora
+
+@{
+    ViewData["Title"] = "Detalle";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Detalle</h2>
+
+<div>
+    <h4>Bitacora</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Pkbitacora)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Pkbitacora)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Accionbitacora)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Accionbitacora)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Tablabitacora)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Tablabitacora)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Fechabitacora)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Fechabitacora)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Registrobitacora)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Registrobitacora)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Paginabitacora)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Paginabitacora)
+        </dd>
+    </dl>
+</div>
+<div>
+    @Html.ActionLink("Editar", "Editar", new { @*Model.Pkbitacora*@ }) |
+    <a asp-action="Index">Back to List</a>
+</div>

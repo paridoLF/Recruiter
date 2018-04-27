@@ -1,4 +1,4 @@
-﻿@model Usuarios;
+﻿@model UsuarioModel;
 @{
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -15,7 +15,7 @@
             <div class="editor-field text-center">@Html.TextBoxFor(u => u.Loginusuario)</div>
             <div class="editor-label text-center">PASSWORD</div>
             <div class="editor-field text-center">@Html.PasswordFor(u => u.Passwordusuario) @Html.ValidationMessageFor(u => u.Passwordusuario)</div>
-            <input type="submit" value="Entrar" />
+            <input type="submit" value="Autenticar" />
         </fieldset>
     </div>
 }

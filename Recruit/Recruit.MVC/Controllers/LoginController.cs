@@ -2,17 +2,47 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using System.Net.Http;
+using System.Net.Http.Headers;
+using System.Net.Http.Formatting;
+using Newtonsoft.Json;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+
+using Recruit.MVC.Models;
 
 namespace Recruit.MVC.Controllers
 {
     public class LoginController : Controller
     {
+        string strApiUrl = "http://localhost:53907/";
+
         // GET: Login
         public ActionResult Index()
         {
+
             return View();
+        }
+
+        public async Task<bool> Autenticar(string p_strLogin, string p_strClave)
+        {
+            bool blnValidar = false;
+
+            using (var vCliente = new HttpClient())
+            {
+                vCliente.BaseAddress = new Uri(strApiUrl);
+                vCliente.DefaultRequestHeaders.Accept.Clear();
+                vCliente.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+
+                HttpResponseMessage hrmResponse = await vCliente.GetAsync("api/Usuarios/" + p_strLogin + "/" + p_strClave);
+                if (hrmResponse.IsSuccessStatusCode)
+                {
+                    blnValidar = true;
+                }
+;
+            }
+
+            return blnValidar;
         }
 
         // GET: Login/Details/5

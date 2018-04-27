@@ -21,8 +21,6 @@ namespace Recruit.MVC.Controllers
         // GET: Bitacora
         public async Task<IActionResult> Index()
         {
-            string strApiUrl = "http://localhost:53907";
-
             List<Bitacora> lstBitacora = new List<Bitacora>();
 
             using (var vCliente = new HttpClient())
@@ -43,20 +41,39 @@ namespace Recruit.MVC.Controllers
         }
 
         // GET: Bitacora/Details/5
-        public IActionResult Details(int id)
+        public async Task<IActionResult> Detalle(int id)
         {
-            return View();
+
+            Bitacora lstBitacora = new Bitacora();
+
+            using (var vCliente = new HttpClient())
+            {
+                vCliente.BaseAddress = new Uri(strApiUrl);
+                vCliente.DefaultRequestHeaders.Accept.Clear();
+                vCliente.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+
+                HttpResponseMessage hrmResponse = await vCliente.GetAsync("api/Bitacora/" + id);
+                if (hrmResponse.IsSuccessStatusCode)
+                {
+                    var vBitacora = hrmResponse.Content.ReadAsStringAsync().Result;
+                    lstBitacora = JsonConvert.DeserializeObject<Bitacora>(vBitacora);
+                }
+;
+            }
+
+            return View(lstBitacora);
         }
 
+        //LLamar a la vista con los campos vacios para llenarlos y crear el registro en base de datos
         // GET: Bitacora/Create
         public IActionResult Crear()
         {
             return View();
         }
 
+        //Incluye los datos en la base de datos
         // POST: Bitacora/Create
         [HttpPost]
-        [ValidateAntiForgeryToken]
         public IActionResult Crear(Bitacora p_Bitacora)
         {
             using (var vCliente = new HttpClient())
@@ -76,6 +93,7 @@ namespace Recruit.MVC.Controllers
             return View(p_Bitacora);
         }
 
+        //Obtiene los datos para realizar la modificación de los datos
         // GET: Bitacora/Edit/5
         public async Task<IActionResult> Editar(int id)
         {
@@ -121,27 +139,26 @@ namespace Recruit.MVC.Controllers
             return View(p_Bitacora);
         }
 
-        // GET: Bitacora/Delete/5
-        public IActionResult Elimina(int id)
-        {
-            return View();
-        }
 
         // POST: Bitacora/Delete/5
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public IActionResult Elimina(int id, IFormCollection collection)
-        {
-            try
-            {
-                // TODO: Add delete logic here
 
-                return RedirectToAction(nameof(Index));
-            }
-            catch
+        public IActionResult Elimina(int PkBitacora)
+        {
+            using (var vCliente = new HttpClient())
             {
-                return View();
+                vCliente.BaseAddress = new Uri(strApiUrl + "api/Bitacora/");
+
+                var delBitacora = vCliente.DeleteAsync(PkBitacora.ToString());
+
+                if (delBitacora.Result.IsSuccessStatusCode)
+                {
+                    return RedirectToAction("Index");
+                }
+
+
             }
+
+            return RedirectToAction("Index");
         }
     }
 }
