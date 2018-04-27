@@ -48,10 +48,10 @@ namespace Recruit.WebAPI.Controllers
         }
 
         // PUT: api/Idioma/5
-        [HttpPut("{id}")]
+        [HttpPut]
         public void Put(int id, [FromBody]TRecIdioma value)
         {
-            var idioma = _context.TRecIdioma.Where(TRecIdioma => TRecIdioma.Pkidioma == id).First();
+            var idioma = _context.TRecIdioma.Where(TRecIdioma => TRecIdioma.Pkidioma == value.Pkidioma).First();
 
             idioma.Descripcionidioma = value.Descripcionidioma;
 
