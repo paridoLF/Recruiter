@@ -1,7 +1,43 @@
-﻿
+﻿@model IEnumerable<Recruit.MVC.Models.Estado>
+
 @{
     ViewData["Title"] = "Index";
 }
 
-<h2>Index de estado</h2>
+<h2>Índice</h2>
 
+<p>
+    <br />
+    <a asp-action="Create">Create New</a>
+    <br />
+</p>
+<table class="table">
+    <thead>
+        <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Pkestado)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Descripcionestado)
+                </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Pkestado)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Descripcionestado)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
